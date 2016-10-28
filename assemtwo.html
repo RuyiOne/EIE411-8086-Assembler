@@ -11,38 +11,56 @@ var y = x.includes(" ");
 alert(y);
 var msgbin = "invalid or incomplete mnemonics or instruction";
 var msghex= "invalid or incomplete mnemonics or instruction";
-(y)?compare(x):printmsg(msgbin, msghex);
+var zopen = x.includes("[");
+var zclose = x.includes("]");
+(y && zopen === true && zclose === true)?compare(x):printmsg(msgbin, msghex);
 }
 
 function generate(instr, instrlength){
+switch(instrlength){
+case 6: 
+case 7: bytereg(instr);
+break;
+case 8:
+case 9: 
+case 10: alert(2);
+break;
+default: var msgbin = "invalid or incomplete mnemonics or instruction";
+var msghex= "invalid or incomplete mnemonics or instruction";printmsg(msgbin, msghex)
+}
+}
+
+function bytereg(instr){
 var n = '01000';
 var o = '4'
 instr = instr.trim();
 switch(instr){
-case 'al': n = n+'000';
+case 'ax': n = n+'000';
 o = o + '0';
 break;
-case 'cl':  n = n+'001';
+case 'cx':  n = n+'001';
 o = o + '1';
 break;
-case 'dl':  n = n+'010';
+case 'dx':  n = n+'010';
 o = o + '2';
 break;
-case 'bl':  n = n+'011';
+case 'bx':  n = n+'011';
 o = o + '3';
 break;
-case 'ah':  n = n+'100';
+case 'sp':  n = n+'100';
 o = o + '4';
 break;
-case 'ch':  n = n+'101';
+case 'bp':  n = n+'101';
 o = o + '5';
 break;
-case 'dh':  n = n+'110';
+case 'si':  n = n+'110';
 o = o + '6';
 break;
-case 'bh':  n = n+'111';
+case 'di':  n = n+'111';
 o = o + '7';
 break;
+default: n = "invalid or incomplete mnemonics or instruction";
+ o= "invalid or incomplete mnemonics or instruction";
 }
 printmsg(n, o);
 }
@@ -60,7 +78,6 @@ break;
 default: var msgbin = "invalid or incomplete mnemonics or instruction";
 var msghex= "invalid or incomplete mnemonics or instruction"; printmsg(msgbin, msghex);
 }
-
 }
 </script>
 <input type="text" value="" id="msg"></input>&nbsp;&nbsp;&nbsp;
