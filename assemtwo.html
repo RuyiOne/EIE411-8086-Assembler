@@ -1,0 +1,71 @@
+<html>
+<head>
+<script src="jquery-2.2.2.js" type="text/javascript"></script>
+</head>
+<body>
+<script type="text/javascript">
+function assemble(){
+var x = document.getElementById("msg").value;
+x =x.trim();
+var y = x.includes(" ");
+alert(y);
+var msgbin = "invalid or incomplete mnemonics or instruction";
+var msghex= "invalid or incomplete mnemonics or instruction";
+(y)?compare(x):printmsg(msgbin, msghex);
+}
+
+function generate(instr, instrlength){
+var n = '01000';
+var o = '4'
+instr = instr.trim();
+switch(instr){
+case 'al': n = n+'000';
+o = o + '0';
+break;
+case 'cl':  n = n+'001';
+o = o + '1';
+break;
+case 'dl':  n = n+'010';
+o = o + '2';
+break;
+case 'bl':  n = n+'011';
+o = o + '3';
+break;
+case 'ah':  n = n+'100';
+o = o + '4';
+break;
+case 'ch':  n = n+'101';
+o = o + '5';
+break;
+case 'dh':  n = n+'110';
+o = o + '6';
+break;
+case 'bh':  n = n+'111';
+o = o + '7';
+break;
+}
+printmsg(n, o);
+}
+
+function printmsg(msgbin, msghex){
+document.getElementById("bin").innerHTML = msgbin;
+document.getElementById("hex").innerHTML = msghex;
+}
+
+function compare(x){
+var y = x.substring(0, 3);
+switch(y){
+case "inc": generate(x.substring(3,x.length), x.length);
+break;
+default: var msgbin = "invalid or incomplete mnemonics or instruction";
+var msghex= "invalid or incomplete mnemonics or instruction"; printmsg(msgbin, msghex);
+}
+
+}
+</script>
+<input type="text" value="" id="msg"></input>&nbsp;&nbsp;&nbsp;
+<input type="submit" value="convert" id="sub" onclick="assemble()"></input><br><br>
+<li >Binary<ul id="bin"></ul></li><br>
+<li>Hexadecimal<ul id="hex"></ul></li><br>
+</body>
+</html>
