@@ -13,24 +13,48 @@ var msgbin = "invalid or incomplete mnemonics or instruction";
 var msghex= "invalid or incomplete mnemonics or instruction";
 var zopen = x.includes("[");
 var zclose = x.includes("]");
-(y && zopen === true && zclose === true)?compare(x):printmsg(msgbin, msghex);
+(y || (zopen === true && zclose === true))?compare(x):printmsg(msgbin, msghex);
+}
+
+function regmeminc(instr){
+var first, second, third;
+instr.toUpperCase();
+if (instr.includes('BX')){
+first  = instr.includes('BX+');
+second = instr.includes('BX+SI');
+third = instr.includes('BX+DI');
+
+(first&&(second||third))?(true):(false);
+}
+else if (instr.includes('BP')){
+first  = instr.includes('BP+');
+second = instr.includes('BP+SI');
+third = instr.includes('BP+DI');
+
+(first&&(second||third))?(true):(false);
+}
 }
 
 function generate(instr, instrlength){
-switch(instrlength){
-case 6: 
-case 7: bytereg(instr);
+instr =instr.trim();
+console.log(instr.length);
+switch(instr.length){
+case 2: 
+case 3: wordreg(instr);
 break;
+case 4:
+case 5: 
+case 6: 
+case 7:
 case 8:
-case 9: 
-case 10: alert(2);
+case 9: regmeminc(instr);
 break;
 default: var msgbin = "invalid or incomplete mnemonics or instruction";
 var msghex= "invalid or incomplete mnemonics or instruction";printmsg(msgbin, msghex)
 }
 }
 
-function bytereg(instr){
+function wordreg(instr){
 var n = '01000';
 var o = '4'
 instr = instr.trim();
@@ -71,6 +95,7 @@ document.getElementById("hex").innerHTML = msghex;
 }
 
 function compare(x){
+console.log("arrived");
 var y = x.substring(0, 3);
 switch(y){
 case "inc": generate(x.substring(3,x.length), x.length);
