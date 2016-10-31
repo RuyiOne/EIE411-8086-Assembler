@@ -83,6 +83,46 @@ break;
 case 'di':  n = n+'111';
 o = o + '7';
 break;
+case 'al': n = '1111111'
+n = n+'0' +  '11' + '000' + '000';
+o = 'FE';
+o = o + ' C0';
+break;
+case 'cl':   n = '1111111'
+n = n+'0' +  '11' + '000' + '001';
+o = 'FE';
+o = o + ' C1';
+break;
+case 'dl':   n = '1111111'
+n = n+'0' +  '11' + '000' + '010';
+o = 'FE';
+o = o + ' C2';
+break;
+case 'bl': n = '1111111'
+n = n+'0' +  '11' + '000' + '011';
+o = 'FE';
+o = o + ' C3';
+break;
+case 'ah': n = '1111111'
+n = n+'0' +  '11' + '000' + '100';
+o = 'FE';
+o = o + ' C4';
+break;
+case 'ch':   n = '1111111'
+n = n+'0' +  '11' + '000' + '101';
+o = 'FE';
+o = o + ' C5';
+break;
+case 'dh':   n = '1111111'
+n = n+'0' +  '11' + '000' + '110';
+o = 'FE';
+o = o + ' C6';
+break;
+case 'bh': n = '1111111'
+n = n+'0' +  '11' + '000' + '111';
+o = 'FE';
+o = o + ' C7';
+break;
 default: n = "invalid or incomplete mnemonics or instruction";
  o= "invalid or incomplete mnemonics or instruction";
 }
