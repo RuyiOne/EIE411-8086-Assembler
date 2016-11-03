@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Mnemonic(INC) converter</title>
+<script type="text/javascript">
+
+
+    
+function assemble()
+{
+var code = document.getElementById("mycode");
+var cod = code.value;                //to get code from user
+return cod;                          //returning input value  
+}
+
+function error()   
+{
+var checkcod = assemble();
+var mnemonic = checkcod.substring(0,3);    //to check for INC
+var checkInc = mnemonic.toUpperCase();    
+ if (checkInc != "INC")
+{
+alert ("sorry, you are only allowed to convert mnemonic INC");
+}
+else{
+var space = checkcod.substring(3,4);
+if ( space != " "){                                //to check is there is space before the operand
+alert ("sorry, there is supposed to be a space before the operand");
+}
+}
+}
+
+function start()
+{
+error();                                       //declaring function error
+ var getcod = assemble();
+var msg = document.getElementById("textarea");
+var checkreg = getcod.substring(4,6);             //to check for registers
+var w = "0" ;                                                       //setting my word to zero
+ var mod = "11"; 
+var hex= "FE" + " " + "C";                                       //hex formula
+var bin= "1111111" + w + " " + mod + "000";                     //binary formula
+
+if ( checkreg == "AL" || checkreg == "al" ){  
+bin = bin + "000";
+hex = hex + "0"  ;
+msg.innerHTML = "binary value:" + bin +"<br>" + "Hex value:" + hex ;  //output
+}                 
+
+else if ( checkreg == "CL" || checkreg == "cl" ){
+bin = bin + "001";
+hex = hex + "1"  ;
+msg.innerHTML = "binary value:" + bin +"<br>" + "Hex value:" + hex ;   
+}
+
+else if ( checkreg == "DL" || checkreg == "dl" ){
+bin = bin + "010";
+hex = hex + "2"; 
+msg.innerHTML = "binary value:" + bin +"<br>" + "Hex value:" + hex ; 
+}
+
+else if ( checkreg == "BL" || checkreg ==  "bl" ){
+bin = bin + "011";
+hex = hex + "3";
+msg.innerHTML = "binary value:" + bin +"<br>" + "Hex value:" + hex ; 
+}
+
+else if ( checkreg == "AH" || checkreg == "ah" ){
+bin = bin + "100";
+hex = hex + "4";
+msg.innerHTML = "binary value:" + bin +"<br>" + "Hex value:" + hex ; 
+}
+
+else if ( checkreg == "CH" || checkreg == "ch" ){
+bin = bin + "101";
+hex = hex + "5"; 
+msg.innerHTML = "binary value:" + bin +"<br>" + "Hex value:" + hex ; 
+}
+
+else if ( checkreg == "DH" || checkreg == "dh" ){
+bin = bin + "110";
+hex = hex + "6";  
+msg.innerHTML = "binary value:" + bin +"<br>" + "Hex value:" + hex ; 
+}
+
+else if ( checkreg == "BH" || checkreg == "bh" ){
+bin = bin + "111";
+hex = hex + "7";
+msg.innerHTML = "binary value:" + bin +"<br>" + "Hex value:" + hex ; 
+}
+return msg;
+}  
+
+function highreg()             //checking for highregisters
+{   
+error ();                        //calling fuction error
+var msg = start();
+var checkhigh= assemble();         //assigning a varibale to the return value in function assemble
+ var regh = checkhigh.substring(4,6);
+var binl = "01000";   
+var hexl = "4";     
+
+if ( regh == "AX" || regh == "ax" ){
+binl = binl + "000";
+hexl = hexl + "0";
+msg.innerHTML = "binary value:" + binl +"<br>" + "Hex value:" + hexl ;   
+}
+
+ if ( regh == "CX" || regh == "cx" ){
+binl = binl + "001";
+hexl = hexl + "1";
+msg.innerHTML = "binary value:" + binl +"<br>" + "Hex value:" + hexl ;   
+}
+
+ if ( regh == "DX" || regh == "dx" ){
+binl = binl + "010";
+hexl = hexl + "2";
+msg.innerHTML = "binary value:" + binl +"<br>" + "Hex value:" + hexl ;   
+}
+
+if ( regh == "BX" || regh == "bx" ){
+binl = binl + "011";
+hexl = hexl + "3";
+msg.innerHTML = "binary value:" + binl +"<br>" + "Hex value:" + hexl ;   
+}
+
+ if ( regh == "SP" || regh == "sp" ){
+binl = binl + "100";
+hexl = hexl + "4";
+msg.innerHTML = "binary value:" + binl +"<br>" + "Hex value:" + hexl ;   
+}
+
+ if ( regh == "BP" || regh == "bp" ){
+binl = binl + "101";
+hexl = hexl + "5";
+msg.innerHTML = "binary value:" + binl +"<br>" + "Hex value:" + hexl ;   
+}
+
+ if ( regh == "SI" || regh == "si" ){
+binl = binl + "110";
+hexl = hexl + "6";
+msg.innerHTML = "binary value:" + binl +"<br>" + "Hex value:" + hexl ;   
+}
+
+if ( regh == "DI" || regh == "di" ){
+binl = binl + "111";
+hexl = hexl + "7";
+msg.innerHTML = "binary value:" + binl +"<br>" + "Hex value:" + hexl ;   
+}
+}
+    
+     /* fucntion memory(){ 
+     var checkmem = assemble(); 
+        var msgm = document.getElementById("textfield");
+ var checkmem = assemble();           
+var sub= checkmem.substring(4,5);                          //substring for the first [
+if ( sub == "[" ) {
+var memo=checkmem.substring(5,7);           //substring for the operand [BX]
+var memop = checkmem.substring(5,13);                  //substring for [bx + si]
+    var w = "0" ;  
+    var mod = "00"; 
+    var hexm= "FE" + " " + "0";                                       //hex formula
+    var binm= "1111111" + w + " " + mod + "000";                     //binary formula
+       if  ( memo == "BX]" || "bx" ) {
+    binm = binm + "111";
+    hexm = hexm + "7";
+    msgm.innerHTML = "binary value:" + binm +"<br>" + "Hex value:" + hexm ;   
+    }else if  ( memo == "DI]" ||"di]" ) {
+    binm = binm + "101";
+    hexm = hexm + "5";
+    msgm.innerHTML = "binary value:" + binm +"<br>" + "Hex value:" + hexm ;   
+    }else if  ( memo == "SI]" ||"si]" ) {
+    binm = binm + "101";
+    hexm = hexm + "4";
+    msgm.innerHTML = "binary value:" + binm +"<br>" + "Hex value:" + hexm ;   
+    }
+     else  if  ( memop == "BX + SI]" || "bx + si]" ) {
+    binm = binm + "000";
+    hexm = hexm + 0";
+    msgm.innerHTML = "binary value:" + binm +"<br>" + "Hex value:" + hexm ;   
+    }
+
+     else if  ( memop == "BX + DI]" || "bx + di]" ) {
+    binm = binm + "001";
+    hexm = hexm + "1";
+    msgm.innerHTML = "binary value:" + binm +"<br>" + "Hex value:" + hexm ;   
+    }
+
+     else if  ( memop == "BP + DI]" || "bp + di]" ) {
+    binm = binm + "011";
+    hexm = hexm + "3";
+    msgm.innerHTML = "binary value:" + binm +"<br>" + "Hex value:" + hexm ;   
+    }
+
+     else if( memop == "BP + SI]" || "bp + si]" ) {
+binm = binm + "010";
+hexm = hexm + "2";
+msgm.innerHTML = "binary value:" + binm +"<br>" + "Hex value:" + hexm ;   
+}
+ }
+    } */
+    
+</script>
+    <style type="text/css">
+        h1 {
+            color : darkslategrey;
+        }
+        h4 { color : mediumpurple;
+            
+        }
+    
+        
+           </style>
+</head>
+<body bgcolor="#D8BFD8">
+ 
+    <h1><strong>Mnemonic(INC) Converter </strong></hi>
+    <h4><em>-by Agu amaka 13CJ015265</em></h4>
+<form action="13cj015265" method="get">
+<input type="text" name="mycode" placeholder="enter your code" id="mycode"/>
+<input type="button" value="covert" onclick="highreg();"/>
+</form>
+<div id="textarea">
+</div>
+</body>
+</html>
