@@ -1,0 +1,44 @@
+
+
+<NAME:SANNI DAMILOLA
+<MATRICNUMBER:13CK015424
+<COURSE:ELECT ELECT
+<INSTRUCTION SET : REPE
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>REPE INSTRUCTION SET</title>
+</head>
+<body>
+<h2> Enter Instruction Set:</h2>
+<input id="num">
+  <button onclick="compile()">submit</button> <!-- gives the BCD adjusted equivalent-->
+     <p id="bin"></p>
+     <p id="hex"></p>
+<script>
+    function compile(){
+    var x,bin,hex,dec;
+    x = document.getElementById('num').value.trim().toUpperCase();
+        var y = x.substr(0,4).toString().toUpperCase();
+
+     if (y=="REPE")
+     {
+          dec = 243;
+          bin = dec.toString(2);
+          hex = dec.toString(16).toUpperCase();
+         document.getElementById('bin').innerHTML = "binary : " + bin;
+         document.getElementById('hex').innerHTML = "hexdecimal : " + hex;
+     }
+        else
+     {
+         window.alert('invalid instruction set')
+
+     }
+    }
+</script>
+
+</body>
+</html>
