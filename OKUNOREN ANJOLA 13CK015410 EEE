@@ -1,0 +1,42 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>EIE 411 Assignment</title>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+	<script>
+		$(document).ready(function() {
+			$("#submit").click(function() {
+				function pad(string, padstr, length) {
+					while(string.length < length) {
+						string = padstr + string;
+					}
+					return string;
+				}
+				var regb = 
+
+{"AX":"0","AL":"0","CX":"1","CL":"1","DX":"2","DL":"2","BX":"3","BL":"3","SP":"4","AH":"4","BP":"5","CH":"5","SI":"6","DH":"6","DI":"7","BH":"7"};
+				var value = $("input").val();
+				if (regb[value.substring(4)] && value.substring(0,4) == "JNA ") {
+					var rega = regb[value.substring(4)];
+					$("#bin").html("01110110 " + pad((+rega).toString(2), 0, 8));
+					$("#hex").html("76 " + "0" + (+rega));
+					$("#error").css("visibility", "hidden");
+					$("#bin, #hex").css("visibility", "visible");
+				} else {
+					$("#error").css("visibility", "visible");
+					$("#bin, #hex").css("visibility", "hidden");
+				}
+			});
+		});
+	</script>
+	
+</head>
+<body>
+<h1>JNA</h1>
+<input id="input" required="required"></input>
+<input type="submit" id="submit"/>
+<div id="error" style="visibility:hidden"><b>ERROR: Incomplete mnemonic or instruction</b></div>
+<div id="bin"></div><div id="hex"></div>
+</body>
+</html>
