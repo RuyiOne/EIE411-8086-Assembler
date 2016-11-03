@@ -1,0 +1,56 @@
+
+<!DOCTYPE html>
+<html lang='en'>
+<head>
+	<title>CBW  Command</title>
+</head>
+
+
+
+
+<body>
+<!-- Obaseki Omosefe Noel
+13CJ015307
+COMPUTER ENGINEERING
+EIE 411
+CBW COMMAND
+ -->
+<h1> Convert Byte to Word Command<h1>
+	<script type="text/javascript">				
+		function output(){
+			var Input = document.getElementById('input').value.trim()   //getting the input
+			var binary = 10011000;                                      //binary value of the CBW command
+			var hex = parseInt(binary,2).toString(16).toUpperCase();    //Converting the binary to decimal, and then to hex
+			
+			if(Input=="CBW"|Input=="cbw")
+			{
+			document.getElementById('head_text').innerHTML = "The command is: CBW" ;
+			document.getElementById('cbw_bin').innerHTML = "Binary value:  " + binary;
+			document.getElementById('cbw_hex').innerHTML = 'Hex value:  ' + hex;
+			}
+			else
+			{
+				window.alert("The input command is CBW in upper or lower case.")    //error code 
+			}
+			
+		}
+	</script>
+	<div>
+	    <!-- enables user enter input with enter key -->
+		<input type="text" id='input' name="Instruction" onkeydown=" if (event.keyCode==13)
+																document.getElementById('process').click()">
+		<input type="submit" id ='process' onclick="output()"
+		name="CBW">
+	
+
+	</div>
+	<div>
+		<h2 id = 'head_text'></h2>      
+		<p id = 'cbw_bin'></p>
+		<p id = 'cbw_hex'></p>
+	</div>
+
+
+	
+</body>
+</html>
