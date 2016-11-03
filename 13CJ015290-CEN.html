@@ -1,0 +1,96 @@
+<html>
+<head>
+	<title>AAS</title>
+</head>
+
+<body>
+	<!--
+        Name:       Dawn Idoko
+        Program:    Computer Engineering
+        Mat No:     13CJ015290
+
+		The AAS assembler is "Ascii Adjust for Subtract".
+		It returns only one value and has no displacement.
+		It only variation is AAS.
+	-->
+	
+	<div id="parent">
+	<h4>AAS Assembler</h4>
+	<input id="value" type="text" />
+	<input id="convert" type="button" value="Convert" onclick="assemble();"/>
+    <div id="textarea">
+    </div>
+	<p></p>
+    </div>
+    
+	
+	<script language="javascript" type="text/javascript">
+	
+	function assemble(){
+	
+	var code = document.getElementById("value"); //assigning the text-box element in html to a variable
+	
+    var test = code.value; //assigning the value entered in the text-box element to a variable
+        
+    var error = document.getElementById("textarea"); //assigning text-area element in html to a variable
+        //error.innerHTML this writes to the div; actually in the div.
+    
+    var hexadecimal = document.getElementById("hexadecimal");  
+        
+    var bin = document.getElementById("binary");
+	
+        if (test=="AAS"||test=="aas"){
+            
+            var binary = " 00111111"; // a variable to store my binary value
+            
+            var hex =  parseInt(binary, 2).toString(16); //converts the binary value to a hexadecimal value
+      
+          textarea.innerHTML = "Binary Value:" + binary + "<br/>" + "Hexadecimal Value: <span style='text-transform:uppercase;'>"+hex+"</span>"
+        }
+        else {
+            error.innerHTML = "INVALID MNEMONIC. USE AAS";
+             }
+	
+
+	
+	};
+
+    </script>
+    
+    <style>
+		body{background-color:cadetblue;}
+        #value{text-transform: uppercase;
+				outline:none;
+				border-radius:5px;
+				height:60px;
+				font-size:30px;}
+        #textarea{ height:100px;
+                text-transform: capitalize;
+                width:600px;
+                    }
+		#parent{margin: 0 auto;
+				height:300px;
+				width:50%;
+				text-align:center;
+				background-color:#ffffff;
+				margin-top:200px;
+				border-radius:10px;}
+		h4{text-align:center;
+			font-size:35px;}
+		
+		#convert{
+				width:100px;
+				height:40px;
+				font-size:17px;
+		}
+    
+    </style>
+    
+</body>
+
+
+
+
+
+
+</html>
