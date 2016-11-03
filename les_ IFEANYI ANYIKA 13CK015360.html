@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html lang="en">
+<!--Name: Okpor Paul Chidi
+Matric : 13CK015486
+Program: ICE
+Course: EIE 411-->
+
+<head>
+    <meta charset="UTF-8">
+    <title>LES INSTRUCTION SET</title>
+
+
+</head>
+<body>
+<br><br><br>
+<div class="box">
+    <input class="input" id="txtdata">
+    <button class="button" onclick="data()">
+        Assemble
+    </button>
+
+    <h4 class="text"> Binary: <span id="bin"></span>
+
+
+    </h4>
+    <h4 class="text"> Hexadecimal:
+        <span id="hex"></span>
+    </h4>
+</div>
+<style>
+
+
+
+
+    body {
+        background: rgb(30, 205, 151);
+    }
+
+    .button {
+        -webkit-box-sizing: content-box;
+        -moz-box-sizing: content-box;
+        box-sizing: content-box;
+        width: 250px;
+        height: 70px;
+        cursor: pointer;
+        margin: 0 auto;
+        border: 2px solid white;
+        -webkit-border-radius: 40px;
+        border-radius: 40px;
+        font: normal 37px/70px "Advent Pro", Helvetica, sans-serif;
+        color: white;;
+        text-align: center;
+        -o-text-overflow: clip;
+        text-overflow: clip;
+        letter-spacing: 1px;
+        background: rgba(0, 0, 0, 0);
+        -webkit-transition: background-color 0.3s cubic-bezier(0, 0, 0, 0), color 0.3s cubic-bezier(0, 0, 0, 0), width 0.3s cubic-bezier(0, 0, 0, 0), border-width 0.3s cubic-bezier(0, 0, 0, 0), border-color 0.3s cubic-bezier(0, 0, 0, 0);
+        -moz-transition: background-color 0.3s cubic-bezier(0, 0, 0, 0), color 0.3s cubic-bezier(0, 0, 0, 0), width 0.3s cubic-bezier(0, 0, 0, 0), border-width 0.3s cubic-bezier(0, 0, 0, 0), border-color 0.3s cubic-bezier(0, 0, 0, 0);
+        -o-transition: background-color 0.3s cubic-bezier(0, 0, 0, 0), color 0.3s cubic-bezier(0, 0, 0, 0), width 0.3s cubic-bezier(0, 0, 0, 0), border-width 0.3s cubic-bezier(0, 0, 0, 0), border-color 0.3s cubic-bezier(0, 0, 0, 0);
+        transition: background-color 0.3s cubic-bezier(0, 0, 0, 0), color 0.3s cubic-bezier(0, 0, 0, 0), width 0.3s cubic-bezier(0, 0, 0, 0), border-width 0.3s cubic-bezier(0, 0, 0, 0), border-color 0.3s cubic-bezier(0, 0, 0, 0);
+    }
+
+    .button:hover {
+        color: rgb(30, 205, 151);
+        background: white;
+    }
+
+    .button:active {
+        border: 2px solid white;
+        background: white;
+        -webkit-transition: none;
+        -moz-transition: none;
+        -o-transition: none;
+        transition: none;
+    }
+
+    .input {
+        display: inline-block;
+        -webkit-box-sizing: content-box;
+        -moz-box-sizing: content-box;
+        box-sizing: content-box;
+        padding: 30px 40px;
+        border: 1px solid #b7b7b7;
+        -webkit-border-radius: 3px;
+        border-radius: 3px;
+        font: normal medium/normal Arial, Helvetica, sans-serif;
+        color: rgb(30, 205, 151);
+        -o-text-overflow: clip;
+        text-overflow: clip;
+        background: rgba(252, 252, 252, 1);
+        -webkit-box-shadow: 2px 2px 2px 0 rgba(0, 0, 0, 0.2) inset;
+        box-shadow: 2px 2px 2px 0 rgba(0, 0, 0, 0.2) inset;
+        text-shadow: 1px 1px 0 rgba(255, 255, 255, 0.66);
+        -webkit-transition: all 200ms cubic-bezier(0.42, 0, 0.58, 1);
+        -moz-transition: all 200ms cubic-bezier(0.42, 0, 0.58, 1);
+        -o-transition: all 200ms cubic-bezier(0.42, 0, 0.58, 1);
+        transition: all 200ms cubic-bezier(0.42, 0, 0.58, 1);
+
+    }
+
+    .input:hover {
+        border: 1px solid #a3a3a3;
+        background: rgba(255, 255, 255, 1);
+        -webkit-transition: all 100ms cubic-bezier(0.42, 0, 0.58, 1);
+        -moz-transition: all 100ms cubic-bezier(0.42, 0, 0.58, 1);
+        -o-transition: all 100ms cubic-bezier(0.42, 0, 0.58, 1);
+        transition: all 100ms cubic-bezier(0.42, 0, 0.58, 1);
+    }
+
+    .input:focus {
+        border: 1px solid rgb(30, 205, 151);
+        -webkit-box-shadow: 4px 4px 4px 0 rgba(0, 0, 0, 0.2) inset;
+        box-shadow: 4px 4px 4px 0 rgba(0, 0, 0, 0.2) inset;
+        -webkit-transition: all 50ms cubic-bezier(0.42, 0, 0.58, 1);
+        -moz-transition: all 50ms cubic-bezier(0.42, 0, 0.58, 1);
+        -o-transition: all 50ms cubic-bezier(0.42, 0, 0.58, 1);
+        transition: all 50ms cubic-bezier(0.42, 0, 0.58, 1);
+    }
+
+    .text {
+        -webkit-box-sizing: content-box;
+        -moz-box-sizing: content-box;
+        box-sizing: content-box;
+        border: none;
+        font: normal 28px/1 "raleway", Helvetica, sans-serif;
+        color: #ffffff;
+        text-align: left;
+        -o-text-overflow: ellipsis;
+        text-overflow: ellipsis;
+    }
+
+    .box {
+        margin: auto;
+        width: 50%;
+        border: 3px solid white;
+        padding: 10px;
+    }
+</style>
+
+
+<script>
+    function print(outputbin, outputhex) {
+        document.getElementById('bin').innerHTML = outputbin;
+        document.getElementById('hex').innerHTML = outputhex;
+
+    }
+
+
+    function data() {
+        var ax, bp;
+        var datainput = document.getElementById('txtdata').value.trim();
+        var str = datainput.substr(0, 3).toString().toUpperCase();
+        var mem = datainput.substr(7, 1).toString().toUpperCase();
+
+        if (str == "LES") {
+            if (mem == "M") {
+                var x = datainput.substr(4, 2);
+                var y = x.toString().toUpperCase();
+                switch (y) {
+                    case 'AX':
+                        ax = "1100010000000000";
+                        bp = "C4 00";
+                        break;
+                    case 'BX':
+                        ax = "1100010000011000";
+                        bp = "C4 18";
+                        break;
+                    case 'CX':
+                        ax = "1100010000001000";
+                        bp = "C4 08";
+                        break;
+                    case 'DX':
+                        ax = "1100010000010000";
+                        bp = "C4 10";
+                        break;
+                    case 'BP':
+                        ax = "1100010000101000";
+                        bp = "C4 28";
+                        break;
+                    case 'DI':
+                        ax = "1100010000111000";
+                        bp = "C4 38";
+                        break;
+                    case 'SI':
+                        ax = "1100010000110000";
+                        bp = "C4 30";
+                        break;
+                    case 'SP':
+                        ax = "1100010000100000";
+                        bp = "C4 20";
+                        break;
+
+                    default:
+                        alert("error")
+                        ax = "invalid mnemonics ";
+                        bp = "invalid mnemonics  ";
+
+
+                }
+                print(ax, bp);
+
+            }
+            else {
+                alert("Error, No memory detected");
+                ax = "This instruction requires memory";
+                bp =  "This instruction requires memory";
+                print(ax, bp);
+
+            }
+
+
+        }
+        else {
+            alert("No such instruction");
+            ax = "invalid instruction inputted";
+            bp = "invalid instruction inputted ";
+            print(ax, bp);
+        }
+
+
+        /*  if (datainput == "les") {
+         ax="11000010";
+         bp ="45"
+         print(ax,bp);
+
+         }
+         else {
+         alert("not working")
+         }*/
+
+
+    }
+</script>
+
+</body>
+</html>
