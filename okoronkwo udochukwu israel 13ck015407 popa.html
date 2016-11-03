@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<!--okoronkwo udochukwu israel 13ck015407-->
+
+<head>
+    <meta charset="UTF-8">
+    <title>POPA INSTRUCTION SET</title>
+    <link href="stylepop.css" rel="stylesheet" type="text/css">
+
+
+</head>
+<body>
+<br><br><br>
+
+<div class="box">
+    <input class="input" id="txtdata" placeholder="Please Enter Instruction">
+    <button class="button" onclick="data()">
+        Submit
+    </button>
+
+    <h4 class="text"> Binary: <span id="bin"></span>
+
+
+    </h4>
+    <h4 class="text"> Hexadecimal:
+        <span id="hex"></span>
+    </h4>
+</div>
+
+
+<script>
+    function print(outputbin, outputhex) {
+        document.getElementById('bin').innerHTML = outputbin;
+        document.getElementById('hex').innerHTML = outputhex;
+
+    }
+
+
+    function data() {
+        var ax, bp;
+        var datainput = document.getElementById('txtdata').value.trim();
+        var str = datainput.substr(0, 3).toString().toUpperCase();
+
+
+        if (str == "POP") {
+
+
+            var x = datainput.substr(4, 2);
+            var y = x.toString().toUpperCase();
+            switch (y) {
+                case 'AX':
+                    ax = "01011000";
+                    bp = "58";
+                    break;
+                case 'BX':
+                    ax = "01011011";
+                    bp = "5B";
+                    break;
+                case 'CX':
+                    ax = "01011001";
+                    bp = "59";
+                    break;
+                case 'DX':
+                    ax = "01011010";
+                    bp = "5A";
+                    break;
+                case 'BP':
+                    ax = "01011101";
+                    bp = "5D";
+                    break;
+                case 'DI':
+                    ax = "01011111";
+                    bp = "5F";
+                    break;
+                case 'SI':
+                    ax = "01011110";
+                    bp = "5E";
+                    break;
+                case 'SP':
+                    ax = "01011100";
+                    bp = "5C";
+                    break;
+                case '':
+                    ax = "1000111100000000";
+                    bp = "8F 00";
+                    break;
+
+
+                default:
+                    alert("error")
+                    ax = "invalid mnemonics ";
+                    bp = "invalid mnemonics  ";
+
+
+            }
+            print(ax, bp);
+            /* switch (datainput){
+             case 'POP':
+             ax = "1000111100000000";
+             bp = "8F 00";
+             break;
+
+
+             }
+             print(ax, bp);*/
+
+
+        }
+        else {
+            alert("No such instruction");
+            ax = "invalid instruction inputted";
+            bp = "invalid instruction inputted ";
+            print(ax, bp);
+        }
+
+
+        /*  if (datainput == "les") {
+         ax="11000010";
+         bp ="45"
+         print(ax,bp);
+
+         }
+         else {
+         alert("not working")
+         }*/
+
+
+    }
+</script>
+
+</body>
+</html>
