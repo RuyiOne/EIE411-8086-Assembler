@@ -1,0 +1,97 @@
+<!-- ********************************
+ NAME: ARAUSI DANIEL OGHENEKARO.
+ PROGRAMME : INFORMATION AND COMMUNICATION ENGINEERING.
+ MATRIC NO: 13CK015450.
+ COURSE:EIE 411.
+ INSTRUCTION SET : DAA.  
+*********************************8-->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>DAA.com</title>
+    <style>
+        body{
+              background-color:lightskyblue;
+              font-family:sans-serif;}
+     #container{
+                 border: 1px solid #fff;
+                 border-radius:10px;
+                 width:500px;
+                transform:translate(450px,200px);}
+      #container:hover{
+          box-shadow:1px 1px 2px rgb(123,123,123);}
+        #subcontain{
+                     padding:20px;}
+        input:hover{
+                      box-shadow:1px 1px 2px #000;}
+        input{
+               width:300px;
+               border-top-width:0px;
+               border-left-width:0px;
+               border-right-width:0px;
+               height:40px;
+              font-size:20px;
+              text-indent: 20px; }
+      button{
+
+              border-radius:7px;
+              background-color:rgba(0,0,0,0.7);
+               color : #fff;
+               font-family:inherit;
+               height:40px;}
+
+         button{
+                  transition-duration:2s;
+                  transition-timing-function:linear;
+                  transition-delay:0s;}
+         button:hover{
+
+
+                         width:100px;
+                         box-shadow:1px 1px 2px #000;}
+        #id,#textone,#texttwo{
+              font-size:20px;
+
+           }
+    </style>
+</head>
+<body>
+  <div id ="container">
+      <div id = "subcontain">
+       <p id= "id"> Input instruction set </p>
+         <input id="textbox">
+          <button onclick = "assemble()"> Assemble </button>
+          <p id="textone"></p>
+           <p id="texttwo"></p>
+          </div>
+   </div>
+<script>
+    function assemble()
+    {
+        var contain = document.getElementById('textbox');
+        var input = contain.value;
+        var searchInput = input.toUpperCase();
+        var dec = 39;
+        var bin = dec.toString(2);
+        var hex = dec.toString(16);
+
+       if(searchInput == "DAA" && isNaN(searchInput) )
+       {
+           document.getElementById('textone').innerHTML = "Binary Equivalent : " + bin;
+           document.getElementById('texttwo').innerHTML = "Hexadecimal  Equivalent : " + hex;
+       }
+
+        else
+       {
+           document.getElementById('textone').innerHTML = "Binary Equivalent : " + " input valid instruction set";
+           document.getElementById('texttwo').innerHTML = "Hexadecimal  Equivalent " + " input valid instruction set";
+           window.alert('Invalid instruction set');
+
+       }
+
+    }
+</script>
+</body>
+</html>
