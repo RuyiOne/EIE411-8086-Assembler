@@ -1,0 +1,297 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>Mnemonic Converter</title>
+<script type="text/javascript">
+
+// this collects the instruction
+function assemble()
+{
+   	var instruction = document.getElementById("code");
+	var instr = instruction.value;
+	return instr;
+	
+}
+
+// all my error functions will go here
+function error()
+{
+	var checkInstr = assemble();
+	if (checkInstr == "")
+	{
+		alert("Please type an instruction");
+	}
+	else
+	{
+	
+	var mnemonic = checkInstr.substring(0,3);
+	var checkDiv = mnemonic.toUpperCase();
+	if ( checkDiv != "DIV")
+	{
+		alert("Sorry, We are only working with DIV");
+	}
+	}
+}
+
+// this function sets the mod
+function setMod()
+{
+ error();
+ var checkInstr = assemble();
+  
+ var instrArray = checkInstr.split(" ");
+ var sqbr = instrArray[1].substring(0,1);
+ var sqbr2 = instrArray[2].substring(0,1);
+ var mnem = instrArray[0];
+ var op1 = instrArray[1].substring(0,2); // because of the comma.
+ var operand1= op1.toUpperCase();
+ var operand2 = instrArray[2].toUpperCase();
+ 
+ if(sqbr == "[")
+ {
+	
+    alert("Operand 1 cannot begin with '[' ");
+
+ }
+ 
+ else if(sqbr2 == "[")
+ {
+	 var mod="00";
+	 if(operand1 == "AX")
+	 {
+		var word ="1";
+	 }
+	 else if (operand1 == "AL")
+	 {
+		 var word ="0";
+	 }
+	 else
+	 {
+		alert("Operand 1 must be an accumulator register");
+	 }
+	 var binStr = "1111011" + word + mod; 
+ }
+ else 
+{
+ var sixteen_bit = ["AX", "BX", "CX", "DX", "SP", "BP", "DI", "SI"];
+ var eight_bit = ["AL", "BL", "CL", "DL", "AH", "BH", "CH", "DH"];
+
+ 	
+// checks to see if operands are registers  
+ function check(operand)
+ {
+ var pos16 = sixteen_bit.indexOf(operand);	 
+ var pos8 = eight_bit.indexOf(operand);	
+ if (pos16 >= 0)
+ {
+	 var w = 1; 
+	
+ }
+ else if(pos8 >= 0)
+ {
+	 var w =0;
+
+ }
+ else
+ {
+     alert("Invalid Operands");
+ }
+ return w;
+ }
+ 
+//stops the program if operand is not an accumulator register
+try
+  {
+  if(operand1 != "AX" &&  operand1 != "AL" )
+    {
+    throw "Err1";
+    }
+  }
+catch(er)
+  {
+  if(er=="Err1")
+    {
+    alert("Operand 1 must be an accumulator register");
+    }
+  }
+
+// sets w=1 if registers are 16bit & W=0 if registers are 8bit 
+var checkOperand1 = check(operand1);
+var checkOperand2 = check(operand2);
+
+if(checkOperand1 == 1 && checkOperand2 == 1)
+{
+	var word = "1";
+	var mod = "11";
+	
+}
+else if(checkOperand1 == 0 && checkOperand2 == 0) 
+{
+	var word = "0";
+	var mod = "11";
+	
+}
+else 
+{
+	alert("Invalid Instruction");
+	alert("To solve this error, check your registers");
+}//end else
+
+
+var binStr = "1111011" + word + mod;
+} //end else
+
+var setModReturn = [operand2, binStr, sqbr2];
+return setModReturn;
+}
+// end of setMod function.
+
+function reg()
+{
+ var checkInstr = assemble();
+ var setModReturn = setMod();
+ operand2 = setModReturn[0];
+
+ if(operand2 =="CX" || operand2 =="CL")
+ {
+   var rm = "001";
+ }
+ else if(operand2 =="DX" || operand2 =="DL")
+ {
+  var rm="010";
+ }
+ else if(operand2 =="BX" || operand2 =="BL")
+ {
+  var rm="011";
+ }
+ else if(operand2 =="SP" || operand2 =="AH")
+ {
+  var rm="100";
+ }
+ else if(operand2 =="BP" || operand2 =="CH")
+ {
+  var rm="101";
+ }
+ else if(operand2 =="SI" || operand2 =="DH")
+ {
+  var rm="110";
+ }
+ else if(operand2 =="DI" || operand2 =="BH")
+ {
+  var rm="111";
+ }
+ else
+ {
+	 alert("Invalid Combination");
+ }
+
+ var binStr = setModReturn[1];
+ var binStr = binStr +"110"+ rm ;
+ return binStr;
+}
+// calculates r/m when both operands are registers
+
+function rSlashM()
+{
+ var checkInstr = assemble();
+ var setModReturn = setMod();
+ operand2 = setModReturn[0];
+ 
+ if(operand2 == "[BX+SI]")
+ {
+  var rm = "000";
+ }	
+ else if(operand2 == "[BX+DI]")
+ {
+	var rm =  "001";
+ }
+ else if(operand2 == "[BP+SI]")
+ {
+	var rm =  "010";
+ }
+ else if(operand2 == "[BP+DI]")
+ {
+	var rm =  "011";
+ }
+ else if(operand2 == "[SI]")
+ {
+	var rm =  "100";
+ }
+ else if(operand2 == "[DI]")
+ {
+	var rm =  "101";
+ }
+ else if(operand2 == "[BP]")
+ {
+	var rm =  "110";
+ }
+ else if(operand2 == "[BX]")
+ {
+	var rm =  "111";
+ }
+ else 
+ {
+	 alert("Invalid Combination");
+ }
+ 
+ var binStr = setModReturn[1];
+ var binStr = binStr +"110"+ rm;
+ return binStr;
+ }// calculates r/m for when operand 2 is a memory location.
+    
+function display()
+{	
+var checkInstr = assemble();
+var setModReturn = setMod();
+sqbr2 = setModReturn[2];
+
+if(sqbr2 == "[")
+{
+var binary = rSlashM();
+} 
+else
+{
+var binary = reg();
+}
+
+
+hexValue = parseInt(binary, 2).toString(16);
+
+var hex = document.getElementById("hex");
+var bin = document.getElementById("bin");
+hex.innerHTML = "Hexadecimal:" + " " + hexValue;
+bin.innerHTML = "Binary:" + " " +  binary;
+}
+</script>
+<style>
+body
+{
+ background-color:#ccc;
+ font-family: Segoe, "Segoe UI", "DejaVu Sans", "Trebuchet MS", Verdana, sans-serif;
+}
+h1,p,input,div
+{
+ font-family: Segoe, "Segoe UI", "DejaVu Sans", "Trebuchet MS", Verdana, sans-serif;
+}
+#wrapper
+{
+	width: 500px;
+	height: 500px;
+	padding: 10px;
+}
+</style>
+</head>
+<body>
+<div id="wrapper">
+<h1> Mnemonic Converter (DIV)</h1>
+<input type="text" name="code" id="code" placeholder="e.g DIV AX, BX">
+<input type="submit" value="Convert" onClick="display();">
+<br><br>
+<div id="hex">
+</div>
+<div id="bin">
+</div>
+</div>
+</body>
+</html>
