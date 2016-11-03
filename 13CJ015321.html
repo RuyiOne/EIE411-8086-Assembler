@@ -1,0 +1,63 @@
+<html>
+<head>
+	<title>CLD</title>
+</head>
+
+<body>
+	<!--Name: Oluwawemimo Esther
+		Matric Number: 13CJ015290
+		
+		The CLD command Clears Directory and has only one variation.
+	-->
+
+	<h1>Code for CLD</h1>
+	<input id="value" type="text" />
+	<input id="check" type="button" value="Check" onclick="check();"/>
+    <div id="textarea">
+    </div>
+	<p></p>
+	
+	<script language="javascript" type="text/javascript">
+	
+	function check(){
+	
+	var text = document.getElementById("value"); 
+    var check = text.value;
+    var error = document.getElementById("textarea"); 
+        
+        
+	
+        if (check=="CLD"||check=="cld"){
+            
+            var binary = "11111100"; 
+            var hexadecimal =  parseInt(binary, 2).toString(16); 
+            
+            error.innerHTML ="Binary Value: " + binary +"<br/> hexadecimal Value: " + hexadecimal;
+            
+        }
+        else {
+            error.innerHTML = "Invalid Input";
+             }
+	
+
+	
+	};
+
+	
+	
+	
+	
+	
+	
+	
+	
+	</script>
+    
+</body>
+
+
+
+
+
+
+</html>
