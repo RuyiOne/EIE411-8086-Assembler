@@ -1,0 +1,92 @@
+<!-- *****************************************
+      NAME :  OLATUNJI OLUWAPEMI
+      COURSE:INFORMATION AND COMMUNICATION ENGINEERING
+      MATRIC NO : 13CK015491
+      LEVEL:400LVL
+      INSTRUCTION-SET: CMPSW
+********************************************-->
+<html>
+<head>
+    <style type="text/css">
+		
+		body{
+			background-color: grey;
+			color: black;
+			text-align: center;
+		}
+		h2{
+         text-shadow: 1px,1px,purple;
+         font-size: 25px;
+		}
+		div{
+			padding-top: 50px;
+		}
+		button{
+			color: white;
+			background-color: black;
+			cursor: pointer;
+
+		}
+		button:hover{
+			color: #000;
+			background-color: #fff;
+            border-radius: 10px;
+		}
+		#div1{
+			border: 2px solid #fff;
+			padding-top: 70px;
+			margin:auto;
+			margin-right: 300px;
+			margin-left: 300px;
+		}
+	</style>
+	<h1><p id = "me">Insert your instruction set</h1></h3>
+</head>
+
+<body>
+
+<div id = "div1">
+	<input id="num">
+	<button onclick="run()">submit</button>
+	<p id="txt1"></p>
+	<p id="txt2"></p>
+</div>
+</body>
+<script>
+ function run()
+ {
+ 	 var dec,hex,bin,x,y,m,decOne,hexOne;
+ 	 dec = 166;            //w =0
+ 	 decOne = 167;          //w=1
+ 	 bin = dec.toString(2);
+ 	 hex = dec.toString(16);
+ 	 hexOne = decOne.toString(16);
+ 	 x =document.getElementById('num').value.trim();
+ 	 y = x.toUpperCase();
+     m = y.charAt(4).toString().toUpperCase();
+
+     document.getElementById('txt1').innerHTML = m;
+	 if(y== "CMPSW" ){
+
+		 switch(m)
+		 {
+			 case 'W':
+				 document.getElementById('txt1').innerHTML = "binary value: " + bin + "|"  + bin + "1";
+				 document.getElementById('txt2').innerHTML = "Hexadecimal value: " + hex + "|"  + hexOne;
+				 break;
+
+			 default:
+				 window.alert('invalid input');
+				 break;
+		 }
+		 alert("CORRECT INPUT");
+	 }
+	 else{
+		 alert("ENTER A CORRECT INSTRUCTION SET");
+	 }
+
+ }
+
+
+</script>
+</html>
