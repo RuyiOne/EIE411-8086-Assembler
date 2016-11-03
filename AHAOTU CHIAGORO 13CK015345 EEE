@@ -1,0 +1,112 @@
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+ 
+
+    <title>ASSIGNMENT</title>
+
+    <!-- Bootstrap Core CSS -->
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+
+
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+	<script>
+		$(document).ready(function() {
+			$("#submit").click(function() {
+				function pad(string, padstr, length) {
+					while(string.length < length) {
+						string = padstr + string;
+					}
+					return string;
+				}
+				var regb = {"AX":"0","AL":"0","CX":"1","CL":"1","DX":"2","DL":"2","BX":"3","BL":"3","SP":"4","AH":"4","BP":"5","CH":"5","SI":"6","DH":"6","DI":"7","BH":"7"};
+				var value = $("input").val();
+				var reg = value.substring(4);
+				if (regb[reg] && value.substring(0,4) == "JMP ") {
+					rega = regb[reg];
+					$("#bin").html("11111111 " + "11100" + pad((+rega).toString(2), 0, 3));
+					$("#hex").html("FF" + " E" + rega);
+					$("#error").css("visibility", "hidden");
+				} else {
+					$("#error").css("visibility", "visible");				}
+			});
+		});
+	</script>
+</head>
+
+<body>
+
+    <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+        <div class="container">
+            
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                    <span class="sr-only">Toggle navigation</span>
+            
+                </button>
+                <a class="navbar-brand" href="index.html">CONVERT ASSEMBLY LANGUAGE TO BINARY &amp; HEXADECIMAL</a></div>
+            
+            
+            </div>
+            
+       
+    </nav>
+
+   
+    <div class="container">
+
+
+        <div class="row">
+            <div class="col-lg-12">
+              <h1 class="page-header">&nbsp;</h1>
+              <h1 class="page-header"> Welcome to the Converter </h1>
+<p><strong></strong></p>
+          </div>
+          <div class="col-xs-6 col-lg-2">
+              <h6>MNEMONIC</h6>
+            <h1>JMP</h1>
+            </div>
+          <div class="col-xs-6 col-lg-2">
+            <h6>DESCRIPTION</h6>
+            <h6>This group of instruction will cause the 8086 to fetch its next instruction from the location specified or indicated by a instruction rather than from the next location after the JMP instruction.</h6>
+            <p>Example:</p>
+            <p>JMP AX </p>
+          </div>
+</div>
+<input id="input" />
+	<input type="submit" id="submit" />
+	
+	<div id="error" style="visibility:hidden"><b>ERROR: Incomplete mnemonic or instruction</b></div>
+	<div class="col-xs-6 col-sm-2"><h6>HEXADECIMAL</h6><span id="hex">00 00</span></div>
+	<div class="col-xs-6 col-sm-3"><h6>BINARY<h6><span id="bin">00000000 00000000</span></div>
+
+
+        <div>
+        <footer>
+            <div class="row">
+                <div class="col-lg-12">
+                  <p>&nbsp;</p>
+                  <p>&nbsp;</p>
+                  <p>&nbsp;</p>
+                  <p>Copyright &copy; CHIAGORO AHAOTU (13CK015345) &nbsp;2016</p>
+                </div>
+            </div>
+        </footer>
+
+    </div>
+    <!-- /.container -->
+
+ 
+
+
+
+</body>
+
+</html>
