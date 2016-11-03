@@ -1,0 +1,83 @@
+<!-- EIE 411 PROJECT - CLI COMMAND
+NAME: ONIKUTE OPEYEMI O.
+MATRIC NO: 13CJ015323
+PROGRAM: COMPUTER ENGINEERING -->
+<!DOCTYPE html>
+<html lang='en'>
+<head>
+	<title>CLI Instruction Command</title>
+</head>
+
+
+
+
+<body>
+	<script type="text/javascript">
+		function reset(){											//Simple function to clear the output on the screen
+			document.getElementById('head_text').innerHTML = " " ;
+			document.getElementById('cli_bin').innerHTML = " ";
+			document.getElementById('cli_hex').innerHTML = ' ';
+			window.alert("Cleared!") 
+			}
+
+		function output(){
+			var Input = document.getElementById('input').value.trim()   //getting the value of the input and stripping the whitespace
+			var binary = 11111010;                                      //binary value of the CLI command
+			var hex = parseInt(binary,2).toString(16).toUpperCase();    //Converting the binary to decimal, and then to hex
+			
+			if(Input=="CLI"|Input=="cli")
+			{
+			document.getElementById('head_text').innerHTML = "Command: 		CLI" ;				//Clear the text in the output paragraphs
+			document.getElementById('cli_bin').innerHTML = "Binary value: 		" + binary;
+			document.getElementById('cli_hex').innerHTML = 'Hexadecimal value: 		' + hex;
+			}
+			else
+			{
+				window.alert("The input command is CLI in upper or lower case.")    		//display error message to the user
+			}
+			
+		}
+		
+		// document.getElementById('reset').onclick = reset();								//Javascript to reset the output 
+
+	</script>
+	<br>
+	<br>
+	<br>
+	<br>
+	<br>
+	<br>
+
+
+	
+	<div style="text-align: center;">
+	    <!-- onkeydown added to text input to enable user clicks with enter -->
+	    <h2>This command is CLI. Let's test it's implementation.</h2>
+	    <h4>Enter CLI in the input below</h4>
+		<input type="text" id='input' placeholder='Enter the command here.' style="width: 20%" name="Instruction" onkeydown=" if (event.keyCode==13)
+																document.getElementById('process').click()">
+		<br>
+		<br>
+		<div class="row">
+		<input type="submit" id ='process' onclick="output()"
+		name="CLI" >
+		<input type="button" id ='reset' onclick="javascript: reset()" value ="Reset">
+		</div>
+		
+
+	</div>
+	<br>
+	<br>
+	<br>
+	<div style="text-align: center;">
+		<h3 id = 'head_text'></h3>      <!-- Reference header and paragraphs that change value after the operation --> 
+		<p id = 'cli_bin'></p>
+		<p id = 'cli_hex'></p>
+	</div>
+
+<script type="text/javascript">
+
+</script>
+	
+</body>
+</html>
