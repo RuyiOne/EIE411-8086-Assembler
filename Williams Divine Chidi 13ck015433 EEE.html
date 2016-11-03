@@ -1,0 +1,128 @@
+
+<!doctype html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>EIE 411 Assignment</title>
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+	<style>
+	.header {
+		background-color: #f0f0f0;
+		padding:10px 0 30px 0;
+		box-shadow: 0 40px 40px #f0f0f0;
+	}
+
+	.header h1 {
+		font-size:80px;
+		margin-top:-12px;
+	}
+
+	.header .col-xs-6, .header .col-sm-2, .header .col-sm-3, .header .col-sm-7 {
+		margin-bottom:30px;
+		margin-top:40px;
+	}
+
+	.myInput {
+		margin-bottom:5px;
+	}
+
+	.errormsg {
+		color:red;
+		font-weight:bold;
+		visibility:hidden;
+		margin-top:10px;
+	}
+
+	#hexvalue, #binvalue, .m{
+		font-family: monospace;
+	}
+
+	#binvalue, #hexvalue {
+		visibility:hidden;
+	}
+	</style>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+	<script>
+		$(document).ready(function() {
+			$("#input").focus();
+			function pad(string, padstr, length) {
+				while(string.length < length) {
+					string = padstr + string;
+				}
+				return string;
+			}
+			function onError() {
+				$(".errormsg").css("visibility", "visible");
+				$("#hexvalue, #binvalue").css("visibility", "hidden");
+			}
+			$("#input").keyup(function(e) {
+				if (e.keyCode===13) {
+					$("#submit").click();
+				}
+			});
+			$("#submit").click(function() {
+				var input = $("#input").val();
+				var word = (input.substring(3,5) === "AL") ? 0 : 1;
+				var port = input.substring(7);
+				var bin;
+				var hex;
+				var dec;
+				if(!input.match(/^IN\s(AL|AX),\s(DX|[0-9]|[1-9][0-9]|1[0-9][0-9]|2[0-4][0-9]|25[0-5])$/)) {
+					onError();
+					return;
+				}
+				$(".errormsg").css("visibility", "hidden");
+				$("#hexvalue, #binvalue").css("visibility", "visible");
+				if(port == "DX") {
+					dec = 236 + word;
+					bin = dec.toString(2);
+					hex = dec.toString(16).toUpperCase();
+				} else {
+					dec = 228 + word;
+					bin = dec.toString(2) + " " + pad((+port).toString(2), 0, 8);
+					hex = dec.toString(16).toUpperCase() + " " + pad((+port).toString(16), 0, 2);
+				}
+				$("#hexvalue").html(hex);
+				$("#binvalue").html(bin);
+			});
+		});
+	</script>
+</head>
+
+<body>
+	<div class="header">
+		<div class="container">
+			<div class="col-xs-6 col-lg-2">
+				<h6>MNEMONIC</h6>
+				<h1>IN</h1>
+			</div>
+			<div class="col-xs-6 col-lg-2">
+				<h6>OPERATORS</h6>
+				<p class="m">AL, im.byte<br/>AL, DX<br/>AX, im.byte<br/>AX, DX</p>
+			</div>
+			<div class="col-xs-6 col-lg-3">
+				<h6>DESCRIPTION</h6>
+				<p>Input from port into AL or AX.<br/>Second operand is a port number.<br/>If required to access port number over 255 - DX register should be used.<br/></p>
+			</div>
+			<div class="col-xs-6 col-lg-5">
+				<h6>EXAMPLE</h6>
+				<p class="m">IN AX, 4 //get status of traffic lights<br/>IN AL, 7 //get status of stepper-motor</p>
+			</div>
+			<div class="clearfix"></div>
+			<label class="col-xs-12 form-control-label" for="myInput"><h6>MACHINE LANGUAGE CODE:</h6></label>
+			<div class="col-xs-12">
+				<input class=" form-control myInput" placeholder="e.g. IN AX, 20" id="input" />
+			</div>
+			<div class="col-sm-1">
+				<input type="submit" id="submit" class="btn btn-success" value="SUBMIT" />
+			</div>
+			<div class="col-xs-12">
+				<div class="errormsg">ERROR: Invalid or incomplete mnemonic or instruction</div>
+			</div>
+			<div class="col-xs-6 col-sm-2"><h6>BINARY</h6><span id="binvalue">00000000 00000000</span></div>
+			<div class="col-xs-6 col-sm-3"><h6>HEXADECIMAL<h6><span id="hexvalue">00 00</span></div>
+			<div class="col-sm-7"><b>WILLIAMS DIVINE CHIDI<br>13CK015433<br>ELECT. ELECT. ENG<br>400L</b></div>
+		</div>
+	</div>
+</body>
+</html>
