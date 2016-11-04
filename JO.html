@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<h2>Kunle Adeniyi, assignment on JO</h2>
+<html>
+<body>
+<input id="contain" type="text">
+<p>input jump position</p>
+<input id="level" type="text">
+<button type="button" onclick="myfunction()">evaluate</button>
+
+<br>
+Binary:<i id="bin"></i>
+<br>
+hexadecimal:<i id="hex"></i>
+<p id="error"></p>
+
+<script>
+function myfunction(){
+var contain = document.getElementById("contain");
+var input = contain.value;
+var otherpart = input.substring(4);
+testOP = parseInt(otherpart);
+testJO = input.search(/JO/i);
+var level = document.getElementById("level");
+var output = level.value;
+
+var error = document.getElementById("error");
+error.innerHTML ="";
+
+var bin = document.getElementById("bin");
+var hex = document.getElementById("hex");
+bin.innerHTML = ""
+hex.innerHTML = ""
+
+if ((testJO >= 0)&&(testOP >= 0)){
+var bin = document.getElementById("bin");
+var hex = document.getElementById("hex");
+
+var OP = parseInt(otherpart,16).toString(2);
+var JP = parseInt(output,16).toString(2);
+
+OP1 = parseInt(OP, 2);
+JP2 = parseInt(JP, 2);
+
+var bin2 = (OP1 + JP2).toString(2);
+var bin1 = "01110000";
+
+
+var hexa1 = parseInt(bin1,2).toString(16);
+var hexa2 = parseInt(bin2,2).toString(16);
+
+
+bin.innerHTML = bin1 + " " + bin2;
+hex.innerHTML = hexa1 + " " + hexa2;
+
+}
+else{
+var error = document.getElementById("error");
+error.innerHTML ="wrong input";
+}
+}
+
+</script>
+</body>
+</html>
