@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<!-- //NAME : EGBEOLA ADEBAYO;
+ ELECTRICAL ELECTRONICS ENNGINEERING;
+  MATRIC No: 13ck015371;
+
+ JE  means jump if equal.This will jump if the "equal flag" (also known as the "zero flag") in the FLAGS register is set. 
+This gets set as a result of arithmetic operations, or instructions like TEST and CMP.;
+JE  is to test if zero flag is set and then jump to somewhere else or continue to the next instruction that follows.;
+USAGE;
+test cx, cx;
+je   some_label;
+
+
+
+
+
+
+ -->
+ 
+ <html>
+ 
+   <head>
+   <title></title>
+	<style type="text/css">
+		
+		body{
+			background-color: blue;
+			color: white;
+			text-align: center;
+		}
+		h2{
+         text-shadow: 1px,1px,brown;
+         font-size: 25px;
+		}
+		div{
+			padding-top: 50px;
+		}
+		button{
+			color: white;
+			background-color: purple;
+			cursor: pointer;
+                        
+                        }
+                    button:hover{
+                     background-color:brown;
+                     color: white;
+                     border-radius:10px;
+                    }
+	</style>
+   </head>
+   <body>
+     <p> Input instruction set</p>
+        <input  id="input"> <br>
+     <p> input jump position </p>
+        <input id= "label" ><br><br>
+     <button onclick=" assemble()">Submit</button>
+     <p id="bin"></p>
+     <p id="hex"></p>
+
+   <script>
+       function assemble()
+       {
+           var inputOne = document.getElementById('input').value;
+           
+           var firstPart = inputOne.substr(0,3);
+           var z = inputOne.search(/JE/i);
+           
+           var otherPart = inputOne.substr(4,3);
+           var otherPartInt = parseInt(otherPart);
+
+           var secondInput = document.getElementById('label').value;
+           secondInputInt = parseInt(secondInput);
+
+           var subtract = (secondInputInt) - (otherPartInt );
+           var divide =  subtract / 2 ;
+           var op = 255 -  (divide);
+           var bindec = 116;
+           var binbin = bindec.toString(2);
+           var binhex = bindec.toString(16);
+
+          var op1 = op.toString(16);
+          var  op2 =op.toString(2);
+           if((z >= 0) && (otherPartInt >= 0))
+           {
+
+
+               document.getElementById('bin').innerHTML = "Binary Equivalent : " + op2+ "" + "" + "/" + binbin;
+               document.getElementById('hex').innerHTML = "Hexadecimal Equivalent : "   + binhex +"  "  +   op1 + " " + " " + " " ;
+           }
+
+        else
+           {
+              window.alert('invalid or incomplete mnemonics or instruction');
+           }
+
+       }
+   </script>
+
+   </body>
+</html>
