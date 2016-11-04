@@ -1,0 +1,174 @@
+<!-- *****************************************
+      NAME :  EKUNDAYO OLUWASEGUN
+      COURSE:ELECTRICAL AND ELECTRONICS ENGINEERINGF
+      MATRIC NO : 13CK015375
+      LEVEL:400LVL
+      INSTRUCTION-SET: IMUL
+********************************************-->
+<!Doctype html>
+<html>
+<head>
+    <link href="eie.css" type="text/css" rel="stylesheet" >
+</head>
+<body>
+<div id="subbody">
+    <div id="subbody1">
+        <p id="style"> input instruction set below </p>
+        <input id="textField"/>
+        <button onclick="myFunction()">Assemble</button>
+        <p id="myField1"></p>
+        <p id="myField2"></p>
+    </div>
+</div>
+</body>
+<script>
+
+    function myFunction() {
+        var r, dec, dec1,bin1,bin, hex;
+        dec = 15;
+        dec1= 14;
+        hex1= dec1.toString(16)
+        bin1= dec1.toString(2);
+        bin = dec.toString(2);
+        hex = dec.toString(16);
+        r = document.getElementById("textField").value.trim();
+        var x = r.substr(5, 2);
+        var m = r.substr(0,4).toString().toUpperCase();
+        var y = x.toUpperCase();
+
+        if (m== "IMUL" ){
+            switch (y) {
+                case 'AX':
+                    // 1111011w | mod101r/m
+                    //where w=1 and mod =11,r/m=000
+                    document.getElementById('myField1').innerHTML = "Binary Equivalent: " + bin + "0111" + "|" + bin1 + "1000";
+                    document.getElementById('myField2').innerHTML = "Hexadecimal Equivalent: " + hex + "7" + "|" + hex1 + "8";
+                    break;
+
+
+                case 'CX':
+
+                    // 1111011w | mod101r/m
+                    //where w=1 and mod =11,r/m=001
+                    document.getElementById('myField1').innerHTML = "Binary Equivalent: " + bin + "0111" + "|" + bin1 + "1001";
+                    document.getElementById('myField2').innerHTML = "Hexadecimal Equivalent: " + hex + "7" + "|" + hex1 + "9";
+                    break;
+
+                case 'BX':
+                    // 1111011w | mod101r/m
+                    //where w=1 and mod =11,r/m=010
+                    document.getElementById('myField1').innerHTML = "Binary Equivalent: " + bin + "0111" + "|" + bin1 + "1010";
+                    document.getElementById('myField2').innerHTML = "Hexadecimal Equivalent: " + hex + "7" + "|" + hex1 + "a";
+                    break;
+
+
+                case 'DX':
+                    // 1111011w | mod101r/m
+                    //where w=1 and mod =11,r/m=011
+                    document.getElementById('myField1').innerHTML = "Binary Equivalent: " + bin + "0111" + "|" + bin1 + "1011";
+                    document.getElementById('myField2').innerHTML = "Hexadecimal Equivalent: " + hex + "7" + "|" + hex1 + "b";
+                    break;
+
+                case 'SP':
+
+                    // 1111011w | mod101r/m
+                    //where w=1 and mod =11,r/m=100
+                    document.getElementById('myField1').innerHTML = "Binary Equivalent:" + bin + "0111" + "|" + bin1 + "1100";
+                    document.getElementById('myField2').innerHTML = "Hexadecimal Equivalent: " + hex + "7" + "|" + hex1 + "c";
+                    break;
+
+                case 'BP':
+                    // 1111011w | mod101r/m
+                    //where w=1 and mod =11,r/m=101
+                    document.getElementById('myField1').innerHTML = "Binary Equivalent: " + bin + "0111" + "|" + bin1 + "1101";
+                    document.getElementById('myField2').innerHTML = "Hexadecimal Equivalent: " + hex + "7" + "|" + hex1 + "d";
+                    break;
+
+                case 'SI':
+                    // 1111011w | mod101r/m
+                    //where w=1 and mod =11,r/m=110
+                    document.getElementById('myField1').innerHTML = "Binary Equivalent: " + bin + "0111" + "|" + bin1 + "1110";
+                    document.getElementById('myField2').innerHTML = "Hexadecimal Equivalent: " + hex + "7" + "|" + hex1 + "e";
+                    break;
+
+                case 'DI':
+                    // 1111011w | mod101r/m
+                    //where w=1 and mod =11,r/m=111
+                    document.getElementById('myField1').innerHTML = "Binary Equivalent: " + bin + "0111" + "|" + bin1 + "1111";
+                    document.getElementById('myField2').innerHTML = "Hexadecimal Equivalent: " + hex + "7" + "|" + hex1 + "f";
+                    break;
+
+
+                case 'AL':
+                    // 1111011w | mod101r/m
+                    //where w=0 and mod =11,r/m=000
+                    document.getElementById('myField1').innerHTML = "Binary Equivalent: " + bin + "0110" + "|" + bin1 + "1000";
+                    document.getElementById('myField2').innerHTML = "Hexadecimal Equivalent: " + hex + "6" + "|" + hex1 + "8";
+                    break;
+
+                case 'CL':
+                    // 1111011w | mod101r/m
+                    //where w=0 and mod =11,r/m= 001
+                    document.getElementById('myField1').innerHTML = "Binary Equivalent: " + bin + "0110" + "|" + bin1 + "1001";
+                    document.getElementById('myField2').innerHTML = "Hexadecimal Equivalent: " + hex + "6" + "|" + hex1 + "9";
+                    break;
+                case 'BL':
+                    // 1111011w | mod101r/m
+                    //where w=0 and mod =11,r/m=010
+                    document.getElementById('myField1').innerHTML = "Binary Equivalent: " + bin + "0110" + "|" + bin1 + "1010";
+                    document.getElementById('myField2').innerHTML = "Hexadecimal Equivalent: " + hex + "6" + "|" + hex1 + "a";
+                    break;
+
+
+                case 'DL':
+                    // 1111011w | mod101r/m
+                    //where w=0 and mod =11,r/m=011
+                    document.getElementById('myField1').innerHTML = "Binary Equivalent: " + bin + "0110" + "|" + bin1 + "1011";
+                    document.getElementById('myField2').innerHTML = "Hexadecimal Equivalent: " + hex + "6" + "|" + hex1 + "b";
+                    break;
+                case 'AH':
+                    // 1111011w | mod101r/m
+                    //where w=0 and mod =11,r/m=100
+                    document.getElementById('myField1').innerHTML = "Binary Equivalent:" + bin + "0110" + "|" + bin1 + "1100";
+                    document.getElementById('myField2').innerHTML = "Hexadecimal Equivalent: " + hex + "6" + "|" + hex1 + "c";
+                    break;
+
+                case 'CH':
+                    // 1111011w | mod110r/m
+                    //where w=0 and mod =11,r/m=101
+                    document.getElementById('myField1').innerHTML = "Binary Equivalent: " + bin + "0110" + "|" + bin1 + "1101";
+                    document.getElementById('myField2').innerHTML = "Hexadecimal Equivalent: " + hex + "6" + "|" + hex1 + "d";
+                    break;
+
+                case 'DH':
+                    // 1111011w | mod101r/m
+                    //where w=0 and mod =11,r/m=110
+
+                    document.getElementById('myField1').innerHTML = "Binary Equivalent: " + bin + "0110" + "|" + bin1 + "1110";
+                    document.getElementById('myField2').innerHTML = "Hexadecimal Equivalent: " + hex + "6" + "|" + hex1 + "e";
+                    break;
+
+                case 'BH':
+                    // 1111011w | mod101r/m
+                    //where w=0 and mod =11,r/m= 111
+                    document.getElementById('myField1').innerHTML = "Binary Equivalent: " + bin + "0110" + "|" + bin1 + "1111";
+                    document.getElementById('myField2').innerHTML = "Hexadecimal Equivalent: " + hex + "6" + "|" + hex1 + "f";
+                    break;
+
+
+                default:
+                    windows.alert("INCORRECT INPUT !!!");
+            }
+             alert("CORRECT INPUT !!!");
+        }
+        else{
+            alert("PLEASE ENTER THE CORRECT INSTRUCTION SET 'IMUL'");
+        }
+
+    }
+
+
+
+</script>
+
+</html>

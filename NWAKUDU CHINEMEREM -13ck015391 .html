@@ -1,0 +1,188 @@
+<!-- *****************************************
+      NAME :  NWAKUDU CHINEMEREM
+      COURSE:ELECTRICAL AND ELECTRONICS ENGINEERING
+      MATRIC NO : 13CK015391
+      LEVEL:400LVL
+      INSTRUCTION-SET: NEG
+********************************************-->
+<!Doctype html>
+<html>
+<head>
+</head>
+<body>
+<div id="subbody">
+    <div id="subbody1" style="background-color: darkslateblue;">
+        <p id="style" style="color: white;"><i>input instruction set (NEG) below </i></p>
+        <input id="rcv"/>
+        <button onclick="assemble()">Assemble</button>
+        <p id="textone"></p>
+        <p id="texttwo"></p>
+    </div>
+</div>
+</body>
+<script>
+
+
+    function assemble() {
+        var r, dec, bin, hex, z, ax, bx;
+        dec = 15;
+        dec1= 13;
+        bin = dec.toString(2);
+        bin1 = dec1.toString(2);
+        hex1 =dec1 .toString(16);
+        hex = dec.toString(16);
+        r = document.getElementById("rcv").value.trim();
+        var x = r.substr(4, 2).toString().toUpperCase();
+        var m = r.substr(0, 3).toString().toUpperCase();
+        var y = x.toUpperCase();
+
+
+
+        if (m == "NEG") {
+
+
+            switch (y) {
+
+
+                case 'AX':
+                    // 1111011w | mod110r/m
+                    //where w=1 and mod =11,r/m=000
+                    document.getElementById('textone').innerHTML = "Binary Equivalent: " + bin + "0111" + "|" + bin1 + "0000";
+                    document.getElementById('texttwo').innerHTML = "Hexadecimal Equivalent: " + hex + "7" + "|" + hex1 + "0";
+
+                    break;
+
+
+                case 'CX':
+
+                    // 1111011w | mod110r/m
+                    //where w=1 and mod =11,r/m=001
+                    document.getElementById('textone').innerHTML = "Binary Equivalent: " + bin + "0111" + "|" + bin1 + "0001";
+                    document.getElementById('texttwo').innerHTML = "Hexadecimal Equivalent: " + hex + "7" + "|" + hex1 + "1";
+                    break;
+
+                case 'BX':
+                    // 1111011w | mod110r/m
+                    //where w=1 and mod =11,r/m=010
+                    document.getElementById('textone').innerHTML = "Binary Equivalent: " + bin + "0111" + "|" + bin1 + "0010";
+                    document.getElementById('texttwo').innerHTML = "Hexadecimal Equivalent: " + hex + "7" + "|" + hex1 + "2";
+                    break;
+
+
+                case 'DX':
+                    // 1111011w | mod110r/m
+                    //where w=1 and mod =11,r/m=011
+                    document.getElementById('textone').innerHTML = "Binary Equivalent: " + bin + "0111" + "|" + bin1 + "0011";
+                    document.getElementById('texttwo').innerHTML = "Hexadecimal Equivalent: " + hex + "7" + "|" + hex1 + "3";
+                    break;
+
+                case 'SP':
+
+                    // 1111011w | mod110r/m
+                    //where w=1 and mod =11,r/m=100
+                    document.getElementById('textone').innerHTML = "Binary Equivalent:" + bin + "0111" + "|" + bin1+ "0100";
+                    document.getElementById('texttwo').innerHTML = "Hexadecimal Equivalent: " + hex + "7" + "|" + hex1 + "4";
+                    break;
+
+                case 'BP':
+                    // 1111011w | mod110r/m
+                    //where w=1 and mod =11,r/m=101
+                    document.getElementById('textone').innerHTML = "Binary Equivalent: " + bin + "0111" + "|" + bin1 + "0101";
+                    document.getElementById('texttwo').innerHTML = "Hexadecimal Equivalent: " + hex + "7" + "|" + hex1 + "5";
+                    break;
+
+                case 'SI':
+                    // 11112011w | mod110r/m
+                    //where w=1 and mod =11,r/m=110
+                    document.getElementById('textone').innerHTML = "Binary Equivalent: " + bin + "0111" + "|" + bin1 + "0110";
+                    document.getElementById('texttwo').innerHTML = "Hexadecimal Equivalent: " + hex + "7" + "|" + hex1 + "6";
+                    break;
+
+                case 'DI':
+                    // 1111011w | mod110r/M
+                    //where w=1 and mod =11,r/m=111
+                    document.getElementById('textone').innerHTML = "Binary Equivalent: " + bin + "0111" + "|" + bin1 + "0111";
+                    document.getElementById('texttwo').innerHTML = "Hexadecimal Equivalent: " + hex + "7" + "|" + hex1+ "7";
+                    break;
+
+
+                case 'AL':
+                    // 1111011w | mod110r/m
+                    //where w=0 and mod =11,r/m=000
+                    document.getElementById('textone').innerHTML = "Binary Equivalent: " + bin + "0110" + "|" + bin1 + "0000";
+                    document.getElementById('texttwo').innerHTML = "Hexadecimal Equivalent: " + hex + "6" + "|" + hex1 + "0";
+                    break;
+
+                case 'CL':
+                    // 1111011w | mod110r/m
+                    //where w=0 and mod =11,r/m= 001
+                    document.getElementById('textone').innerHTML = "Binary Equivalent: " + bin + "0110" + "|" + bin1 + "0001";
+                    document.getElementById('texttwo').innerHTML = "Hexadecimal Equivalent: " + hex + "6" + "|" + hex1 + "1";
+                    break;
+                case 'BL':
+                    // 1111011w | mod110r/m
+                    //where w=0 and mod =11,r/m=010
+                    document.getElementById('textone').innerHTML = "Binary Equivalent: " + bin + "0111" + "|" + bin1 + "0010";
+                    document.getElementById('texttwo').innerHTML = "Hexadecimal Equivalent: " + hex + "6" + "|" + hex1 + "2";
+                    break;
+
+
+                case 'DL':
+                    // 1111011w | mod110r/m
+                    //where w=0 and mod =11,r/m=011
+                    document.getElementById('textone').innerHTML = "Binary Equivalent: " + bin + "0110" + "|" + bin1 + "0011";
+                    document.getElementById('texttwo').innerHTML = "Hexadecimal Equivalent: " + hex + "6" + "|" + hex1 + "3";
+                    break;
+                case 'AH':
+                    // 1111011w | mod110r/m
+                    //where w=0 and mod =11,r/m=100
+                    document.getElementById('textone').innerHTML = "Binary Equivalent:" + bin + "0110" + "|" + bin1 + "0100";
+                    document.getElementById('texttwo').innerHTML = "Hexadecimal Equivalent: " + hex + "6" + "|" + hex + "4";
+                    break;
+
+                case 'CH':
+                    // 1111011w | mod110r/m
+                    //where w=0 and mod =11,r/m=101
+                    document.getElementtextoneById('').innerHTML = "Binary Equivalent: " + bin + "0110" + "|" + bin1 + "0101";
+                    document.getElementById('texttwo').innerHTML = "Hexadecimal Equivalent: " + hex + "6" + "|" + hex1 + "5";
+                    break;
+
+                case 'DH':
+                    // 1111011w | mod110r/m
+                    //where w=0 and mod =11,r/m=110
+
+                    document.getElementById('textone').innerHTML = "Binary Equivalent: " + bin + "0110" + "|" + bin1 + "0110";
+                    document.getElementById('texttwo').innerHTML = "Hexadecimal Equivalent: " + hex + "6" + "|" + hex1 + "6";
+                    break;
+
+                case 'BH':
+                    // 1111011w | mod110r/m
+                    //where w=0 and mod =11,r/m= 111
+
+                    document.getElementById('textone').innerHTML = "Binary Equivalent: " + bin + "0110" + "|" + bin1 + "0111";
+                    document.getElementById('texttwo').innerHTML = "Hexadecimal Equivalent: " + hex + "6" + "|" + hex1 + "7";
+                    break;
+
+
+                default:
+                    alert("Invalid Instruction set!!!");
+                    document.getElementById('textone').innerHTML = "Binary Equivalent: " + "Invalid mnemonics";
+                    document.getElementById('texttwo').innerHTML = "Hexadecimal Equivalent: " + "Invalid mnemonics";
+
+
+            }
+
+        }
+        else {
+            document.getElementById('textone').innerHTML = "Binary Equivalent: " + "Invalid mnemonics";
+            document.getElementById('texttwo').innerHTML = "Hexadecimal Equivalent: " + "Invalid mnemonics";
+            windows.alert("Invalid Instruction set. Make sure its 'NEG'");
+        }
+
+
+    }
+
+</script>
+
+</html>
+	   

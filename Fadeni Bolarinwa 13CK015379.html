@@ -1,0 +1,70 @@
+<html>
+  
+<head>
+    
+<title>Assembly Rep
+</title>
+  
+</head>
+ 
+<body>
+
+
+   <p>Input Command: <input id="txtParams" placeholder="Input Command"/></p>
+
+
+   Binary Code: <br > <p><textarea id="txtBinary" disabled></textarea></p>
+
+   Hex Code: <br > <p><textarea id="txtHex" disabled></textarea></p>
+
+   <p><button onclick="convert();
+">Convert</button></p>
+
+ <script type="text/javascript">
+    function toHex(str){
+	var hex = '';
+
+	for(var i=0;i<str.length;i++)
+ {
+	   hex += ''+str.charCodeAt(i).toString(16);
+
+	}
+	return hex;
+
+    }
+
+    var convert = function(){
+	var param = document.getElementById('txtParams');
+
+        var bin = document.getElementById('txtBinary');
+
+        var hex = document.getElementById('txtHex');
+
+	document.getElementById('txtBinary').value = "";
+
+	document.getElementById('txtHex').value ="";
+
+        if (!document.getElementById('txtParams').value.includes('jcxz')){
+	     alert('Error: Command not correct');
+
+	}
+else{
+	  for (var i = 0; i < document.getElementById('txtParams').value.length; i++) {
+           var result;
+
+           result += document.getElementById('txtParams').value[i].charCodeAt(0).toString(2) + " ";
+
+           document.getElementById('txtBinary').value = result;
+  
+           }
+
+	    document.getElementById('txtHex').value = toHex(document.getElementById('txtParams').value);
+  
+	  }
+
+	}
+
+
+ </script>
+
+ </body>

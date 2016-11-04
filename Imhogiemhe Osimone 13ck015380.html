@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>EIE 411 Assignment</title>
+  
+</head>
+<h2>
+<table style="width:100%">
+  <tr>
+    <td>Imhogiemhe Osimone</td>
+    <td>13ck015380</td> 
+    <td>EEE</td>
+  </tr>
+</table>
+ </h2>
+
+<body>
+<h3>Mnemonic: MOVSB</h3>
+
+<p id="story">Copy byte at DS:[SI] to ES:[DI]. Update SI and DI.
+</p><br>
+<h4> 
+Command Example:
+</h4>
+
+<p>MOVSB</p><br>
+ 
+ <p>Command</p>
+
+ <input type="text" id="code" onchange="afunction()" onKeyPress="return checkSubmit(event)" ></input>
+ <input type="submit" value="Insructions, Assemble!" id="submit" onclick="afunction()" onkeyup="afunction()"></input><br><br>
+ 
+<p><b>Binary</b></p>
+<p id="demo1"></p>
+<p><b>Hexadecimal</b></p>
+<p id="demo2"></p>
+
+<script>
+
+ function checkSubmit(e) 
+ {
+ 
+   if(e && e.keyCode == 13) 
+   {
+      document.forms[0].submit();
+   }
+ }
+ function afunction(code1)
+ {
+
+         var code1 = document.getElementById("code").value ;
+		 
+		 if(code1=="MOVSB"){
+	     document.getElementById("demo1").innerHTML = "10100100";
+         document.getElementById("demo2").innerHTML = "A4";
+		 }
+		 else{
+		 document.getElementById("demo1").innerHTML = "ERROR";
+         document.getElementById("demo2").innerHTML = "ERROR";
+		 }
+
+ }
+</script>
+</body>
+
+</html>

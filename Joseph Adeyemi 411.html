@@ -1,0 +1,68 @@
+<html>
+<head>
+	<title>MOVSW</title>
+</head>
+
+<body>
+	<input id="value" type="text" />
+	<input id="convert" type="button" value="Convert" onclick="assemble();"/>
+    <div id="textarea">
+    </div>
+	<p></p>
+	
+	<script language="javascript" type="text/javascript">
+	
+	function assemble(){
+	
+	var code = document.getElementById("value");   //assigning the text-box element in html to a variable
+	//alert(code.value);
+    var test = code.value; //assigning the value entered in the text-box element to a variable
+    var error = document.getElementById("textarea"); ////assigning text-area element n html to a variable
+    //alert(test);
+        
+        //error.innerHTML - this attacks the element covere by the div.
+	
+        if (test=="MOVSW"||test=="MOVSW"){
+            
+            var binary = "10100101"; // a variable to store my binary value
+            var hex =  parseInt(binary, 2).toString(16); //converts the binary value to a hexadecimal value
+            
+            error.innerHTML ="Binary Value: " + binary +"<br/> Hex Value: " + hex;
+            
+        }
+        else {
+            error.innerHTML = "This code was built for only MOVSW mnemonic." ;
+             }
+	
+
+	
+	};
+
+	
+	
+	
+	
+	
+	
+	
+	
+	</script>
+    
+    <style>
+        #value{text-transform: uppercase;}
+        #textarea{ border: solid 2px transparent;
+                    height:100px;
+            text-transform: capitalize;
+            width:600px;
+                    }
+    
+    </style>
+    
+</body>
+
+
+
+
+
+
+</html>
