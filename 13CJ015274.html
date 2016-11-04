@@ -1,0 +1,49 @@
+<!-- 
+    AYOBAMI OLUWAPELUMI MERCY 
+	13CJ015274
+	COMPUTER ENGINEERING
+	EIE 411
+
+    The ASCII Adjust for Multiply.
+    It corrects the result of multiplication of two BCD values.
+-->
+<!DOCTYPE html>
+<html>
+<body>
+<p>Please input the code</p>
+<input id="mnemonic" onkeydown="myAss();" type="text">
+<button type="button"  onclick = "myAss();">Check</button>
+    <p>
+        Binary: <i id = "result"></i>
+    </p>
+    <p>
+        Hexadecimal: <i id = "Hex"></i>
+    </p>
+<p id = "error"></p>
+<script>
+	function myAss(){
+	var p, pr, bin, bin2, hex, hex2;
+	 pr = document.getElementById("mnemonic");
+	 p = pr.value;
+	if (p == "AAM" || p =="aam"){
+		 bin = "11010100";
+		 bin2 = "00001010";
+		 hex = parseInt(bin,2).toString(16);
+		 hex2 = parseInt(bin2,2).toString(16);
+		
+		
+		
+	document.getElementById("result").innerHTML = bin +" " + bin2;
+	document.getElementById("Hex").innerHTML = hex +" "+"0"+ hex2;
+	document.getElementById("error").innerHTML = "";
+	}
+	else if (p != "AAM"){
+		err = "The mnemonic is invalid";
+		document.getElementById("result").innerHTML = "";
+		document.getElementById("Hex").innerHTML = "";
+		document.getElementById("error").innerHTML = err;
+	}
+ }
+</script>
+</body>
+</html>
