@@ -1,0 +1,36 @@
+<html xmlns="http://www.w3.org/1999/html">
+<title></title>
+<i><head >Instruction set for PUSHF </head></i></br>
+<body>
+<input id="push"/>
+<button onclick="okFunction()">Submit</button>
+<p id="myField1"></p>
+<p id="myField2"></p>
+
+</body>
+<script>
+    function okFunction() {
+        var dec,y,bin,hex;
+        dec =156;
+
+        var  x =  document.getElementById('push').value.trim();
+        var m = x.search(/PUSHF/i);
+        bin = dec.toString(2);
+        hex = dec.toString(16);
+
+        if (x== "PUSHF"){
+            document.getElementById('myField1').innerHTML = "Binary value :"+ bin ;
+            document.getElementById('myField2').innerHTML = "Hexadecimal value: "+ hex ;
+            alert("CORRECT INPUT!!")
+        }
+        else {
+            alert("WRONG INPUT ");
+        }
+
+
+
+    }
+
+</script>
+
+</html>
