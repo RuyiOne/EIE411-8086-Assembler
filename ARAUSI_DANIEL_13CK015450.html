@@ -34,23 +34,36 @@
                height:40px;
               font-size:20px;
               text-indent: 20px; }
-      button{
+      #bottom{
 
               border-radius:7px;
               background-color:rgba(0,0,0,0.7);
                color : #fff;
                font-family:inherit;
-               height:40px;}
+               height:40px;
+			   display:inline;
+			   cursor:pointer;}
+	
+			 
+	#bottom:hover {
+	                  
+			
+			         box-shadow:1px 1px 3px rgb(123,123,123);
+			         background-color:#fff;
+					  color:rgb(50,100,240);
+					 border-radius:8px;}
+   #bottom:active{
+                         border-radius:7px;
+						  background-color:rgba(0,0,0,0.7);
+						   color : #fff;
+						   font-family:inherit;
+						   height:40px;
+						   display:inline;
+						   cursor:pointer;}
+  
 
-         button{
-                  transition-duration:2s;
-                  transition-timing-function:linear;
-                  transition-delay:0s;}
-         button:hover{
-
-
-                         width:100px;
-                         box-shadow:1px 1px 2px #000;}
+         
+       
         #id,#textone,#texttwo{
               font-size:20px;
 
@@ -60,9 +73,10 @@
 <body>
   <div id ="container">
       <div id = "subcontain">
+	  <marquee><blockquote> The Daa instruction set is used with the add, it means decimal adjust after add.</blockquote></marquee>
        <p id= "id"> Input instruction set </p>
          <input id="textbox">
-          <button onclick = "assemble()"> Assemble </button>
+          <button id="bottom" onclick = "assemble()"> Assemble </button>
           <p id="textone"></p>
            <p id="texttwo"></p>
           </div>
