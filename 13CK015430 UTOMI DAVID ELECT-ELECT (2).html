@@ -1,0 +1,45 @@
+NAME: UTOMI DAVID
+13CK015430
+ELECT-ELECT ENG
+
+1) Explanation Of IRET Mnemonic (Interrupt Return)
+	when the 8086 responds to an interrupt signal or to an interrupt instruction, it pushes the flags, the current value of IP onto the stack. 
+It then loads CS and IP with the starting address of the procedure which one writes for the response to that interrupt. The  IRET instruction is 
+used at the end of the interrupt service procedure to return execution to the interrupted program. to do this return, the 8086
+copies the saved value of IP from the stack to IP, the stored value of CS from the stack to CS, the stored value of the flags back to the flag register.
+Flags will have the values they had before the interrupt, so any flag settings from the procedure will be lost unless they arespecifically saved in some way.
+
+   2)Writing a code to show binary and hexadecimal equivalent of IRET
+<!DOCTYPE html>
+
+<body>
+<p>Instruction mnemonic</p>
+
+<input id="utoms"/>
+
+<button onclick="myfunction()">submit</button>
+<p id="bin"></p>
+<p id="hex"></p>
+
+
+<script>
+function myfunction() {
+var bin0,hex0,dec;
+dec =207;
+bin0= dec.toString(2);
+hex0 = dec.toString(16);
+var b = document.getElementById('utoms').value;
+ var i =b.search("/IRET/i");
+
+if( b=="IRET"){
+document.getElementById('bin').innerHTML = "Binary:"+ bin0;
+document.getElementById('hex').innerHTML = "Hexadecimal:"+ hex0;
+alert("Good");
+}
+else{
+alert("Invalid");
+}
+}
+</script>
+</body>
+</html>
