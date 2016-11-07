@@ -1,0 +1,47 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>EIE 411 Assignment</title>
+    <link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="css/myCSS.css">
+	<script src="js/jquery-3.1.1.min.js"></script>
+	<script src="js/myjs.js"></script>
+</head>
+
+<body>
+	<div class="header">
+		<div class="container">
+			<div class="col-xs-6 col-lg-2">
+				<h6><strong>MNEMONIC</strong></h6>
+				<h1>OUT</h1>
+			</div>
+			<div class="col-xs-6 col-lg-2">
+				<h6><strong>OPERATORS</strong></h6>
+				<p class="m">im.byte, AL<br/>DX, AL<br/>im.byte,  AX<br/>DX, AX</p>
+			</div>
+			<div class="col-xs-6 col-lg-3">
+				<h6><strong>DESCRIPTION</strong></h6>
+				<p><strong>Output from port into AL or AX.<br/> First operand is a port number.<br/>If required to access port number over 255 - DX register should be used.<br/>
+				</strong></p>
+			</div>
+			<div class="clearfix"></div>
+			<strong>
+			<label class="col-xs-12 form-control-label" for="myInput">
+			</strong>
+			<h6><strong>MACHINE  CODE</strong>:</h6></label>
+			<div class="col-xs-12">
+				<input class=" form-control myInput" placeholder="e.g. OUT 20, AX" id="input" />
+			</div>
+			<div class="col-sm-1">
+				<input type="submit" id="submit" class="btn btn-success" value="SUBMIT" />
+			</div>
+			<div class="col-xs-12">
+				<div class="errormsg">ERROR: Invalid or incomplete mnemonic or instruction</div>
+			</div>
+			<div class="col-xs-6 col-sm-2"><h6>BINARY</h6><span id="binvalue">00000000 00000000</span></div>
+			<div class="col-xs-6 col-sm-3"><h6>HEXADECIMAL<h6><span id="hexvalue">00 00</span></div>
+		</div>
+	</div>
+</body>
+</html>
