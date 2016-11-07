@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+ <html>
+   <head>
+       <!--JAMES JOY A. 13CK015382 ELECTRICAL & ELECTRONICS ENG
+
+ -->
+   </head>
+   <body>
+     <p> input instruction set JNG</p>
+        <input  id="input"> <br>
+     <p> input jump position </p>
+        <input id= "present" ><br><br>
+     <button onclick=" run()">submit</button>
+     <p id="bin"></p>
+     <p id="hex"></p>
+
+   <script>
+       function run()
+       {
+           var inputOne = document.getElementById('input').value;
+           // possible errors could come from here alternative would be toUpperCase()
+           var firstPart = inputOne.substr(0,3);
+           var z = inputOne.search(/JNG/i);
+           // might likely have issues here.... not targeting xxx....
+           var otherPart = inputOne.substr(4,3);
+           var otherPartInt = parseInt(otherPart);
+
+           var secondInput = document.getElementById('present').value;
+           secondInputInt = parseInt(secondInput);
+
+           var subtract = (secondInputInt) - (otherPartInt );
+           var divide =  subtract / 2 ;
+           var eben = 255 -  (divide);
+           var bindec = 126;
+           var binbin = bindec.toString(2);
+           var binhex = bindec.toString(16);
+
+          var boy = eben.toString(16);
+          var  girl =eben.toString(2);
+           if((z >= 0) && (otherPartInt >= 0))
+           {
+
+
+               document.getElementById('bin').innerHTML = "Binary Equivalent : " + girl + "" + "" + "/" + binbin;
+               document.getElementById('hex').innerHTML = "Hexadecimal Equivalent : " +  boy + " " + " " + "" + binhex;
+           }D
+
+        else
+           {
+              window.alert('invalid input');
+           }
+
+       }
+   </script>
+
+   </body>
+</html>
