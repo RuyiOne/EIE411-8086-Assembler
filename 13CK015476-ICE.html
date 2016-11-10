@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html>
+<head>
+</head>
+
+<body>
+<!-- 
+The IMUL mnemonic does register to register multiplication. The multiplication is done in the accumulator register.
+it can be done in either the accumulator register as a 16bit register or the accumulator register as an 8-bit register(AH, AL).
+
+example
+IMUL AX, BX
+IMUL AL, BL
+
+16bit registers must be multiplied with 16bit registers and 8 bit eisters with 8bit registers.
+
+
+ -->
+    <h3>Assembler for IMUL</h3>
+    <h4>Please enter code in the format IMUL XX,XX all Uppercase Letters</h4>
+	<input id="code_box" type="text" />
+    
+	<input id="submit" type="button" value="submit" onclick="runcode();"/>
+    <div id="text">
+    </div>
+	<p></p>
+	
+	<script language="javascript" type="text/javascript">
+	
+	function runcode(){
+    
+	var code = document.getElementById("code_box"); 
+        
+    var test = code.value;
+    var testIMUL = test.search(/IMUL/i);
+    var firstPart = test.substr(5,2);
+    var firstOp = firstPart.search(/ax/i);
+    var firstOp1 = firstPart.search(/al/i);
+    var comma = test.substr(7,1);
+    var secondPart = test.substr(8,2);
+    var error = document.getElementById("textarea"); 
+    
+    if ((testIMUL>=0)&&(firstOp>=0)){
+        if (secondPart=="AX"){
+            var bin1="11110111";
+            var bin2="11101000";
+            var hex1=parseInt(bin1,2).toString(16);
+            var hex2=parseInt(bin2,2).toString(16);
+            
+            text.innerHTML="Binary "+bin1+" "+bin2 +"<br/>" + "Hexadecimal "+hex1+" "+hex2;
+        }
+        else if (secondPart=="BX"){
+            var bin1="11110111";
+            var bin2="11101011";
+            var hex1=parseInt(bin1,2).toString(16);
+            var hex2=parseInt(bin2,2).toString(16);
+            
+            text.innerHTML="Binary "+bin1+" "+bin2 +"<br/>" + "Hexadecimal "+hex1+" "+hex2;
+        }
+        else if (secondPart=="CX"){
+            var bin1="11110111";
+            var bin2="11101001";
+            var hex1=parseInt(bin1,2).toString(16);
+            var hex2=parseInt(bin2,2).toString(16);
+            
+            text.innerHTML="Binary "+bin1+" "+bin2 +"<br/>" + "Hexadecimal "+hex1+" "+hex2;
+        }
+        else if (secondPart=="DX"){
+            var bin1="11110111";
+            var bin2="11101010";
+            var hex1=parseInt(bin1,2).toString(16);
+            var hex2=parseInt(bin2,2).toString(16);
+            
+            text.innerHTML="Binary "+bin1+" "+bin2 +"<br/>" + "Hexadecimal "+hex1+" "+hex2;
+        }
+        else if (secondPart=="SP"){
+            var bin1="11110111";
+            var bin2="11101100";
+            var hex1=parseInt(bin1,2).toString(16);
+            var hex2=parseInt(bin2,2).toString(16);
+            
+            text.innerHTML="Binary "+bin1+" "+bin2 +"<br/>" + "Hexadecimal "+hex1+" "+hex2;
+        }
+        else if (secondPart=="BP"){
+            var bin1="11110111";
+            var bin2="11101101";
+            var hex1=parseInt(bin1,2).toString(16);
+            var hex2=parseInt(bin2,2).toString(16);
+            
+            text.innerHTML="Binary "+bin1+" "+bin2 +"<br/>" + "Hexadecimal "+hex1+" "+hex2;
+        }
+        else if (secondPart=="SI"){
+            var bin1="11110111";
+            var bin2="11101110";
+            var hex1=parseInt(bin1,2).toString(16);
+            var hex2=parseInt(bin2,2).toString(16);
+            
+            text.innerHTML="Binary "+bin1+" "+bin2 +"<br/>" + "Hexadecimal "+hex1+" "+hex2;
+        }
+        else if (secondPart=="DI"){
+            var bin1="11110111";
+            var bin2="11101111";
+            var hex1=parseInt(bin1,2).toString(16);
+            var hex2=parseInt(bin2,2).toString(16);
+            
+            text.innerHTML="Binary "+bin1+" "+bin2 +"<br/>" + "Hexadecimal "+hex1+" "+hex2;
+       
+        }
+        
+        
+        
+    }else if((testIMUL>=0)&&(firstOp1>=0)){
+         if (secondPart=="AL"){
+            var bin1="11110110";
+            var bin2="11101000";
+            var hex1=parseInt(bin1,2).toString(16);
+            var hex2=parseInt(bin2,2).toString(16);
+            
+            text.innerHTML="Binary "+bin1+" "+bin2 +"<br/>" + "Hexadecimal "+hex1+" "+hex2;
+        }
+        else if (secondPart=="BL"){
+            var bin1="11110110";
+            var bin2="11101011";
+            var hex1=parseInt(bin1,2).toString(16);
+            var hex2=parseInt(bin2,2).toString(16);
+            
+            text.innerHTML="Binary "+bin1+" "+bin2 +"<br/>" + "Hexadecimal "+hex1+" "+hex2;
+        }
+        else if (secondPart=="CL"){
+            var bin1="11110110";
+            var bin2="11101001";
+            var hex1=parseInt(bin1,2).toString(16);
+            var hex2=parseInt(bin2,2).toString(16);
+            
+            text.innerHTML="Binary "+bin1+" "+bin2 +"<br/>" + "Hexadecimal "+hex1+" "+hex2;
+        }
+        else if (secondPart=="DL"){
+            var bin1="11110110";
+            var bin2="11101010";
+            var hex1=parseInt(bin1,2).toString(16);
+            var hex2=parseInt(bin2,2).toString(16);
+            
+            text.innerHTML="Binary "+bin1+" "+bin2 +"<br/>" + "Hexadecimal "+hex1+" "+hex2;
+        }
+        else if (secondPart=="AH"){
+            var bin1="11110110";
+            var bin2="11101100";
+            var hex1=parseInt(bin1,2).toString(16);
+            var hex2=parseInt(bin2,2).toString(16);
+            
+            text.innerHTML="Binary "+bin1+" "+bin2 +"<br/>" + "Hexadecimal "+hex1+" "+hex2;
+        }
+        else if (secondPart=="CH"){
+            var bin1="11110110";
+            var bin2="11101101";
+            var hex1=parseInt(bin1,2).toString(16);
+            var hex2=parseInt(bin2,2).toString(16);
+            
+            text.innerHTML="Binary "+bin1+" "+bin2 +"<br/>" + "Hexadecimal "+hex1+" "+hex2;
+        }
+        else if (secondPart=="DH"){
+            var bin1="11110110";
+            var bin2="11101110";
+            var hex1=parseInt(bin1,2).toString(16);
+            var hex2=parseInt(bin2,2).toString(16);
+            
+            text.innerHTML="Binary "+bin1+" "+bin2 +"<br/>" + "Hexadecimal "+hex1+" "+hex2;
+        }
+        else if (secondPart=="BH"){
+            var bin1="11110110";
+            var bin2="11101111";
+            var hex1=parseInt(bin1,2).toString(16);
+            var hex2=parseInt(bin2,2).toString(16);
+            
+            text.innerHTML="Binary "+bin1+" "+bin2 +"<br/>" + "Hexadecimal "+hex1+" "+hex2;
+       
+    }
+        else{
+            text.innerHTML = "Error";
+        }
+	
+
+    
+	};
+    }
+    </script>
