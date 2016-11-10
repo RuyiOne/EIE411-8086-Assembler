@@ -1,0 +1,92 @@
+<!-- *****************************************
+      NAME :  ADEBAYO ADEBOYE OLUWASANMI
+      COURSE:ELECTRICAL AND ELECTRONICS ENGINEERING
+      MATRIC NO : 13CK015336
+      LEVEL:400LVL
+      INSTRUCTION-SET: SCASW
+********************************************-->
+<html>
+<head>
+    <h3><p id = "me" >Insert your instruction set</p></h3>
+</head>
+<body>
+
+<div id = "p">
+    <input id="num">
+    <button onclick="run()" style="background-color: blueviolet;">submit</button>
+    <p id="txt1"></p>
+    <p id="txt2"></p>
+</div>
+</body>
+<script>
+    function run() {
+        var dec, hex, bin, x, y, hex1, bin1;
+        dec = 174;
+        dec1 = 175; //w =1
+        bin = dec.toString(2);
+        bin1 = dec1.toString(2);
+        hex = dec.toString(16);
+        hex1 = dec1.toString(16);
+        x = document.getElementById('num').value.trim();
+        var r = x.substr(5, 2).toString().toUpperCase()
+        var m = x.substr(0,4).toString().toUpperCase();
+        y = m.toUpperCase();
+        if (m = "SCAS") {
+            switch(r)
+            {
+                case 'AX':
+                case 'BX':
+                case 'CX':
+                case 'DX':
+                case 'SP':
+                case 'BP':
+                case 'SI':
+                case 'DI':
+                    document.getElementById('txt1').innerHTML = "Binary Equivalent: " + bin1 ;
+                    document.getElementById('txt2').innerHTML = "Hexadecimal Equivalent: " + hex1;
+
+                    break;
+
+
+                case 'AL':
+                case 'BL':
+                case 'CL':
+                case 'DL':
+                case 'AH':
+                case 'BH':
+                case 'CH':
+                case 'DH':
+
+
+                    document.getElementById('txt1').innerHTML = "Binary Equivalent: " + bin ;
+                    document.getElementById('txt2').innerHTML = "Hexadecimal Equivalent: " + hex;
+
+                    break;
+
+
+                default:
+                    alert("Invalid Instruction set!!!");
+                    document.getElementById('txt1').innerHTML = "Binary EquivalentA: " + "Invalid mnemonics";
+                    document.getElementById('txt2').innerHTML = "Hexadecimal Equivalent: " + "Invalid mnemonics";
+
+
+            }
+        }
+        else
+        {
+            document.getElementById('txt1').innerHTML = "Binary Equivalent: " + "Invalid mnemonics";
+            document.getElementById('txt2').innerHTML = "Hexadecimal Equivalent: " + "Invalid mnemonics";
+            windows.alert("Invalid Instruction set. Make sure its 'SCAS'");
+        }
+
+    }
+
+
+
+
+
+
+
+
+</script>
+</html>
