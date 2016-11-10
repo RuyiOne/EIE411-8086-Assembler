@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+<body>
+<input id="contain" type="text">
+<button type="button"onclick="myfunction();">submit</button>
+<h6>13cj015262 computer engineering</h6>
+<br>
+Binary:<i id="bin"></i>
+<br>
+hexadecimal:<i id="hex"></i>
+<p id="error"></p>
+
+ 
+<script>
+
+function myfunction(){
+var contain = document.getElementById("contain"); // takes in value inputted by user in input space and stores it in the variable "contain"
+var input = contain.value; // sores the value taken into contain in the variable input
+
+var error = document.getElementById("error"); 
+error.innerHTML =""; // clears the error message from previous input when a new input is put in
+
+var otherpart = input.substring(4);// stores the value of the integer part of inputted code in variable "otherpart"
+testOP = parseInt(otherpart); //checks for presence of integer in otherpart
+testAAD = input.search(/AAD/i); // checks to see if first part of input contains JNC
+
+var bin = document.getElementById("bin"); // replaces the value in space with id "bin" with value in variable bin
+var hex = document.getElementById("hex"); // replaces the value in space with id "hex" with value in variable hex
+
+bin.innerHTML = ""; // clears the binary value from previous input when a new input is put in
+hex.innerHTML = ""; // clears the hexadecimal value from previous input when a new input is put in
+
+
+if (input=="AAD"|| input =="aad"||(testAAD >= 0)&&(testOP >= 0)){ // checks for the presence of the key word AAD NOT minding the case before executing the steps after it
+var bin = document.getElementById("bin"); // replaces the value on line with id "bin" with that in variable bin
+var hex = document.getElementById("hex"); // replaces the value on line with id "hex" with that in variable hex
+
+var binary1 = "11010101"; // stores the binary value of the first part of the code
+var binary2 = "0000"; // stores the binary of first part of the second part of the code 
+var binary3 = "1010"; // stores the binary of second part of the second part of the code
+var hexa1 = parseInt(binary1,2).toString(16); // converts the binary value of binary1 to hexadecimal
+var hexa2 = parseInt(binary2,2).toString(16); // converts the binary value of binary2 to hexadecimal
+var hexa3 = parseInt(binary3,2).toString(16); // converts the binary value of binary3 to hexadecimal
+
+bin.innerHTML = binary1 + " " + binary2 + binary3; // combines all the values of the stored binary in bin that is then used to replace the value on line with id "bin" with that in variable bin
+hex.innerHTML = hexa1 + " " + hexa2 + hexa3; //  combines all the values of the stored hexadecimal in hex that is then used to replace the value on line with id "hex" with that in variable hex
+
+}
+else{
+var error = document.getElementById("error");
+error.innerHTML ="wrong input"; // displays an error when the if condition is not met
+}
+}
+</script>
+</body>
+</html>
