@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+<body>
+<p>Please enter the code</p>
+<input id = "final" type = "text">
+<p>Please enter your present location</p>
+<input id = "initial" type = "text">
+<button type = "button" onclick = "mnemonic()">GO</button>
+
+<p>
+Binary: <i id = "binary"></i>
+</p>
+<p>
+Hexadecimal: <i id = "h.d"></i>
+</p>
+<p id = "error"></p>
+
+<script>
+function mnemonic(){
+var first = document.getElementById("final").value;
+var first2 = first.substring(4,7);
+var hexto = parseInt(first2);
+var txtJNA = first.substring(0,3);
+var last = document.getElementById("initial").value;
+ 
+ if(txtJNA == "JNA" || txtJNA == "jna"){
+ var last2 = parseInt(last);
+ var last3 = parseInt(last,16).toString(16);
+ var last4 = parseInt(last3,16);
+ var two="1";
+ var twoo= parseInt(two,10).toString(16)
+ var twooo= parseInt(twoo,16);
+ var binb = (twooo+last2);
+ var bina = binb - hexto;
+ alert(first2);
+ var bina2 = parseInt(bina,16).toString(2);
+ var ff = "11111111";
+ var disp = "01110110"
+ var disp2 = ff - bina2;
+ var disp3 = parseInt(disp2,2).toString(16);
+ var disp4 = parseInt(disp,2).toString(16);
+ 
+ document.getElementById("binary").innerHTML = disp +" "+ disp2;
+ document.getElementById("h.d").innerHTML = disp4 +" "+ disp3;
+ document.getElementById("error").innerHTML = " ";
+ }
+ else if(txtJNA != "JNA"){
+ document.getElementById("binary").innerHTML = " ";
+ document.getElementById("h.d").innerHTML = " ";
+ document.getElementById("error").innerHTML = "Invalid code";
+ }
+}
+</script>
+</body>
+</html>

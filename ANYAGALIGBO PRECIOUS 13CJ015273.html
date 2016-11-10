@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title> MNEMONIC CONVERTER</title>
+<script>
+function display(){
+var thecode=document.getElementById("mycode").value;
+var codeword=thecode.substring(0,3).toUpperCase();
+if(thecode == "")
+{
+alert("this field cannot be empty");
+}
+else if(codeword !="CWD")
+{
+alert("Wrong Mnemonic");
+}
+else
+{
+var show=document.getElementById("hex");
+show.innerHTML="Hexadecimal: 99" +"<br>"+"Binary: 1001 1001";
+}
+}
+</script>
+</head>
+<body>
+<h1>MNEOMONIC CONVERTER</h1>
+<input type="text"placeholder="enter text"name="mycode"id="mycode">
+<input type="submit"value="submit"onClick="display();">
+<div id="hex"></div>
+</body>
+</html>
