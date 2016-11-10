@@ -1,0 +1,59 @@
+
+<!DOCTYPE html>
+<html lang='en'>
+<head>
+	<title>DAA Command</title>
+</head>
+
+
+
+
+<body>
+	<script type="text/javascript">
+		function process(){
+			var Input = document.getElementById('input').value.trim()
+			var hex = 27;                                      //binary value of the CLI command
+			var binary = parseInt(hex,16).toString(2).toUpperCase();    //Converting the binary to decimal, and then to hex
+			if(Input=="DAA"|Input=="daa")
+			{
+			document.getElementById('head_text').innerHTML = "DAA" ;				
+			document.getElementById('cli_bin').innerHTML = "Binary value: 		" + binary;
+			document.getElementById('cli_hex').innerHTML = 'Hexadecimal value: 		' + hex;
+			}
+			else
+			{
+				window.alert("Wrong command.")    
+			}
+			
+		}
+
+	</script>
+	
+
+
+	
+	<div>
+	    <h2>Testing the DAA command</h2>
+	    <h4>Enter DAA in the input below</h4>
+		<input type="text" id='input' style="width: 20%" name="Instruction" onkeydown=" if (event.keyCode==13)
+																document.getElementById('process').click()">
+		<br>
+		<br>
+		<div class="row">
+		<input type="submit" id ='process' onclick="process()" name="CLI" >
+		</div>
+		
+
+	</div>
+	<br>
+	<br>
+	<br>
+	<div>
+		<h3 id = 'head_text'></h3>      
+		<p id = 'cli_bin'></p>
+		<p id = 'cli_hex'></p>
+	</div>
+
+	
+</body>
+</html>
