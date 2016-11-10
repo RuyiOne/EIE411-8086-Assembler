@@ -1,0 +1,134 @@
+<!Doctype html>
+<!--
+    NAME: EJIEGBU CHARLES
+    LEVEL: 400 LEVEL
+    MATRIC NO : 13CJ015283
+    PROGRAM: COMPUTER ENGINEERING
+    INSTRUCTION SET: NEG
+
+ -->
+<html>
+<head>
+</head>
+<body>
+<div id="subbody">
+    <div id="subbody1" style="background-color: darkred;">
+        <p id="style" style="color: white;"><i>input instruction set (NEG) below </i></p>
+        <input id="rcv"/>
+        <button onclick="assemble()">Assemble</button>
+        <p id="textone"></p>
+        <p id="texttwo"></p>
+    </div>
+</div>
+</body>
+<style>
+    body {
+      background-color: rgb(129, 123, 123);
+    }
+
+    }
+    #style:first-letter {
+        text-transform: capitalize;
+    }
+    #style {
+        text-shadow: 1px 1px 2px rgb(1, 0, 0);
+        font-size: 20px;
+    }
+    #subbody {
+        border: 1px solid #000;
+        border-radius: 10px;
+        box-shadow: 1px 1px 2px #000;
+        width: 300px;
+        transform: translate(550px, 200px);
+    }
+    #subbody1 {
+        padding: 20px;
+    }
+    input:hover {
+        box-shadow: 1px 1px 2px rgb(129, 123, 123);
+    }
+    button {
+        background-color: rgb(1, 1, 1);
+        color: #fff;
+        border-radius: 5px;
+    }
+    button:hover {
+        cursor: pointer;
+    }
+</style>
+<script>
+    function assemble() {
+        var r, dec, bin, hex, z;
+        dec = 15;
+        bin = dec.toString(2);
+        hex = dec.toString(16);
+        r = document.getElementById("rcv").value.trim();
+        var x = r.substr(4, 2).toString().toUpperCase();
+        var m = r.substr(0, 3).toString().toUpperCase();
+        var y = x.toUpperCase();
+        if (m == "NEG") {
+            switch (y) {
+                case 'AX':
+                    // 1111011w | mod110r/m
+                    //where w=1 and mod =11,r/m=000
+                    document.getElementById('textone').innerHTML = "Binary Equivalent: " + bin + "0111" + "|" + "11011000";
+                    document.getElementById('texttwo').innerHTML = "Hexadecimal Equivalent: " + hex + "7" + "|" + "D8";
+                    break;
+                case 'CX':
+                    // 1111011w | mod110r/m
+                    //where w=1 and mod =11,r/m=001
+                    document.getElementById('textone').innerHTML = "Binary Equivalent: " + bin + "0111" + "|" + "11011001";
+                    document.getElementById('texttwo').innerHTML = "Hexadecimal Equivalent: " + hex + "7" + "|" + "D9";
+                    break;
+                case 'BX':
+                    // 1111011w | mod110r/m
+                    //where w=1 and mod =11,r/m=010
+                    document.getElementById('textone').innerHTML = "Binary Equivalent: " + bin + "0111" + "|" + "11011011";
+                    document.getElementById('texttwo').innerHTML = "Hexadecimal Equivalent: " + hex + "7" + "|" + "DB";
+                    break;
+                case 'DX':
+                    // 1111011w | mod110r/m
+                    //where w=1 and mod =11,r/m=011
+                    document.getElementById('textone').innerHTML = "Binary Equivalent: " + bin + "0111" + "|" + "11011010";
+                    document.getElementById('texttwo').innerHTML = "Hexadecimal Equivalent: " + hex + "7" + "|" + "DA";
+                    break;
+                case 'SP':
+                    // 1111011w | mod110r/m
+                    //where w=1 and mod =11,r/m=100
+                    document.getElementById('textone').innerHTML = "Binary Equivalent:" + bin + "0111" + "|" + "11011100";
+                    document.getElementById('texttwo').innerHTML = "Hexadecimal Equivalent: " + hex + "7" + "|" + "DC";
+                    break;
+                case 'BP':
+                    // 1111011w | mod110r/m
+                    //where w=1 and mod =11,r/m=101
+                    document.getElementById('textone').innerHTML = "Binary Equivalent: " + bin + "0111" + "|" + "11011101";
+                    document.getElementById('texttwo').innerHTML = "Hexadecimal Equivalent: " + hex + "7" + "|" + "DD";
+                    break;
+                case 'SI':
+                    // 11112011w | mod110r/m
+                    //where w=1 and mod =11,r/m=110
+                    document.getElementById('textone').innerHTML = "Binary Equivalent: " + bin + "0111" + "|" + "11011110";
+                    document.getElementById('texttwo').innerHTML = "Hexadecimal Equivalent: " + hex + "7" + "|" + "DE";
+                    break;
+                case 'DI':
+                    // 1111011w | mod110r/M
+                    //where w=1 and mod =11,r/m=111
+                    document.getElementById('textone').innerHTML = "Binary Equivalent: " + bin + "0111" + "|" + "11011111";
+                    document.getElementById('texttwo').innerHTML = "Hexadecimal Equivalent: " + hex + "7" + "|" + "DF";
+                    break;
+
+                default:
+                    alert("Invalid Instruction set!!!");
+                    document.getElementById('textone').innerHTML = "Binary EquivalentA: " + "Invalid mnemonics";
+                    document.getElementById('texttwo').innerHTML = "Hexadecimal Equivalent: " + "Invalid mnemonics";
+            }
+        }
+        else {
+            document.getElementById('textone').innerHTML = "Binary Equivalent: " + "Invalid mnemonics";
+            document.getElementById('texttwo').innerHTML = "Hexadecimal Equivalent: " + "Invalid mnemonics";
+            windows.alert("Invalid Instruction set. Make sure its 'NEG'");
+        }
+    }
+</script>
+
+</html>

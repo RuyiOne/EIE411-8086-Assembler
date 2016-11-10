@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<!--
+    NAME: NKEMDILIM STEPHEN
+    LEVEL: 400 LEVEL
+    MATRIC NO : 13CJ015303
+    PROGRAM: COMPUTER ENGINEERING
+    INSTRUCTION SET: NOP
+
+ -->
+
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>NOP INSTRUCTION SET</title>
+</head>
+<body>
+<h2> Enter Instruction Set: (NOP)</h2>
+<input id="num">
+  <button onclick="compile()">submit</button> <!-- gives the BCD adjusted equivalent-->
+     <p id="bin"></p>
+     <p id="hex"></p>
+<script>
+    function compile(){
+    var x,bin,hex,dec;
+    x = document.getElementById('num').value.trim().toUpperCase();
+        var y = x.substr(0,3).toString().toUpperCase();
+     if (y=="NOP")
+     {
+          dec = 144;
+          bin = dec.toString(2);
+          hex = dec.toString(16).toUpperCase();
+         document.getElementById('bin').innerHTML = "binary : " + bin;
+         document.getElementById('hex').innerHTML = "hexdecimal : " + hex;
+     }
+        else
+     {
+         window.alert('invalid instruction set')
+     }
+    }
+</script>
+
+</body>
+</html>
