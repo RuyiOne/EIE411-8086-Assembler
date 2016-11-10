@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+
+    <head>
+        <title>INT Routines </title>
+        
+    </head>
+    <body>
+        <h1 style="colour:black;">INT ROUTINE CONVERTER</h1> 
+       	 <h2 style="color:purple;">Kindly insert your values </h2>
+  
+   <fieldset style=color:red;">
+   VALUE Tab :<br>
+   <input type="text" name="name" size="100" placeholder="Enter values e.g INT 05..." id="form1"/>
+           </fieldset>
+  
+         <button onclick="myinput()">Proceed</button>
+         <button onclick="clear()">Exit</button>
+         
+         <p id="hex"></p>
+         <p id="bin"></p>
+         
+	<script> 
+            function myinput(){
+                var answer,y,z,hex,bin;
+          
+                answer=document.getElementById("form1");
+                 z=answer.value;
+                y="11001101";
+               // z=answer.elements["name"].value;
+                
+                hex=document.getElementById("hex").innerHTML="BINARY Value :"+"<br>" + ""+"     " + y + "<br>";
+                bin=document.getElementById("bin").innerHTML="HEXADECIMAL value:"+" CD "+"    " + z;
+        var mnemonic = z.substring(0,3);
+	var checkDiv = mnemonic.toUpperCase();
+	if ( checkDiv !== "INT")
+        {
+		alert("please insert an INT command");
+	}
+        
+
+
+      
+            
+           
+            }
+         </script>
+    </body>
+</html>
