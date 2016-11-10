@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="en">
+<!--0GUNKEYE 0BASANMI 13CK015484 ICE-->
+
+
+<head>
+    <title>
+        DEC INSTRUCTION SET
+    </title>
+
+</head>
+<body>
+<script type="text/javascript">
+    function compile() {
+        var x = document.getElementById("msg").value;
+        x = x.trim();
+        var y = x.includes(" ");
+        alert(y);
+        var msgbin = "invalid or incomplete mnemonics or instruction";
+        var msghex = "invalid or incomplete mnemonics or instruction";
+        var zopen = x.includes("[");
+        var zclose = x.includes("]");
+        (y || (zopen === true && zclose === true)) ? compare(x) : printmsg(msgbin, msghex);
+    }
+
+    function menmonics(instr) {
+        var first, second, third;
+        instr.toUpperCase();
+        if (instr.includes('BX')) {
+            first = instr.includes('BX+');
+            second = instr.includes('BX+SI');
+            third = instr.includes('BX+DI');
+
+            (first && (second || third)) ? (true) : (false);
+        }
+        else if (instr.includes('BP')) {
+            first = instr.includes('BP+');
+            second = instr.includes('BP+SI');
+            third = instr.includes('BP+DI');
+
+            (first && (second || third)) ? (true) : (false);
+        }
+    }
+
+    function generate(instr, instrlength) {
+        instr = instr.trim();
+        console.log(instr.length);
+        switch (instr.length) {
+            case 2:
+            case 3:
+                wordreg(instr);
+                break;
+            case 4:
+            case 5:
+            case 6:
+            case 7:
+            case 8:
+            case 9:
+                menmonics(instr);
+                break;
+            default:
+                var msgbin = "invalid or incomplete mnemonics or instruction";
+                var msghex = "invalid or incomplete mnemonics or instruction";
+                printmsg(msgbin, msghex)
+        }
+    }
+
+    function wordreg(instr) {
+        var n, o;
+        ;
+        instr = instr.trim().toLowerCase();
+        switch (instr) {
+            case 'ax':
+                n = "01001000";
+                o = "48";
+                break;
+            case 'cx':
+                n = '01001001';
+                o = '49';
+                break;
+            case 'dx':
+                n = '01001010';
+                o = '4A';
+                break;
+            case 'bx':
+                n = '01001011';
+                o = '4B';
+                break;
+            case 'sp':
+                n = '01001100';
+                o = '4C';
+                break;
+            case 'bp':
+                n = '01001101';
+                o = '4D';
+                break;
+            case 'si':
+                n = '01001110';
+                o = '4E';
+                break;
+            case 'di':
+                n = '01001111';
+                o = '4F';
+                break;
+            case 'al':
+                n = '1111111011001000'
+
+                o = 'FE C8';
+
+                break;
+            case 'cl':
+                n = '1111111011001001'
+
+                o = 'FE C9';
+
+                break;
+            case 'dl':
+                n = '1111111011001010'
+
+                o = 'FE CA';
+
+                break;
+            case 'bl':
+                n = '1111111011001011'
+
+                o = 'FE CB';
+
+                break;
+            case 'ah':
+                n = '1111111011001100'
+
+                o = 'FE CC';
+
+                break;
+            case 'ch':
+                n = '1111111011001101'
+
+                o = 'FE CD';
+
+                break;
+            case 'dh':
+                n = '1111111011001110'
+
+                o = 'FE CE';
+
+                break;
+            case 'bh':
+                n = '1111111011001111'
+
+                o = 'FE CF';
+
+                break;
+            default:
+                n = "invalid or incomplete mnemonics or instruction";
+                o = "invalid or incomplete mnemonics or instruction";
+        }
+        printmsg(n, o);
+    }
+
+    function printmsg(msgbin, msghex) {
+        document.getElementById("bin").innerHTML = msgbin;
+        document.getElementById("hex").innerHTML = msghex;
+    }
+
+    function compare(x) {
+        console.log("arrived");
+        var y = x.substring(0, 3).toString().toUpperCase();
+        switch (y) {
+            case "DEC":
+                generate(x.substring(3, x.length), x.length);
+                break;
+            default:
+                var msgbin = "invalid or incomplete mnemonics or instruction";
+                var msghex = "invalid or incomplete mnemonics or instruction";
+                printmsg(msgbin, msghex);
+        }
+    }
+</script>
+<input type="text" value="" id="msg">&nbsp;&nbsp;&nbsp;
+<input type="submit" value="Run" id="sub" onclick="compile()"><br><br>
+<h3>Binary
+    <ul id="bin"></ul>
+</h3>
+<br>
+<h3>Hexadecimal
+    <ul id="hex"></ul>
+</h3>
+<br>
+</body>
+</html>

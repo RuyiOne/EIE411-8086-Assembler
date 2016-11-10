@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<!--0LUGA 0LUWAT0SIN 13CK015496 ICE-->
+
+
+<head>
+    <meta charset="UTF-8">
+    <title>LOSDB INSTRUCTION SET</title>
+</head>
+<body>
+<h2> Enter Instruction Set:</h2>
+<input id="num">
+  <button onclick="daa()">submit</button> <!-- gives the BCD adjusted equivalent-->
+     <p id="bin"></p>
+     <p id="hex"></p>
+<script>
+    function daa(){
+    var x,bin,hex,dec;
+    x = document.getElementById('num').value.trim().toUpperCase();
+        var y = x.substr(0,5).toString().toUpperCase();
+
+     if (y=="LODSB")
+     {
+          dec = 172;
+          bin = dec.toString(2);
+          hex = dec.toString(16).toUpperCase();
+         document.getElementById('bin').innerHTML = "binary : " + bin;
+         document.getElementById('hex').innerHTML = "hexdecimal : " + hex;
+     }
+        else
+     {
+         window.alert('invalid instruction set')
+
+     }
+    }
+</script>
+
+</body>
+</html>

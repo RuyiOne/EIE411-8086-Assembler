@@ -1,0 +1,301 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!--Alabi jesutofunmi 13ck015443 ICE-->
+<title>
+    Alabi jesutofunmi
+</title>
+
+</head>
+<body>
+<style>
+
+
+
+
+    body {
+        background: #CD2068;
+    }
+
+    .button {
+        -webkit-box-sizing: content-box;
+        -moz-box-sizing: content-box;
+        box-sizing: content-box;
+        width: 250px;
+        height: 70px;
+        cursor: pointer;
+        margin: 0 auto;
+        border: 2px solid white;
+        -webkit-border-radius: 40px;
+        border-radius: 40px;
+        font: normal 37px/70px "Advent Pro", Helvetica, sans-serif;
+        color: white;;
+        text-align: center;
+        -o-text-overflow: clip;
+        text-overflow: clip;
+        letter-spacing: 1px;
+        background: rgba(0, 0, 0, 0);
+        -webkit-transition: background-color 0.3s cubic-bezier(0, 0, 0, 0), color 0.3s cubic-bezier(0, 0, 0, 0), width 0.3s cubic-bezier(0, 0, 0, 0), border-width 0.3s cubic-bezier(0, 0, 0, 0), border-color 0.3s cubic-bezier(0, 0, 0, 0);
+        -moz-transition: background-color 0.3s cubic-bezier(0, 0, 0, 0), color 0.3s cubic-bezier(0, 0, 0, 0), width 0.3s cubic-bezier(0, 0, 0, 0), border-width 0.3s cubic-bezier(0, 0, 0, 0), border-color 0.3s cubic-bezier(0, 0, 0, 0);
+        -o-transition: background-color 0.3s cubic-bezier(0, 0, 0, 0), color 0.3s cubic-bezier(0, 0, 0, 0), width 0.3s cubic-bezier(0, 0, 0, 0), border-width 0.3s cubic-bezier(0, 0, 0, 0), border-color 0.3s cubic-bezier(0, 0, 0, 0);
+        transition: background-color 0.3s cubic-bezier(0, 0, 0, 0), color 0.3s cubic-bezier(0, 0, 0, 0), width 0.3s cubic-bezier(0, 0, 0, 0), border-width 0.3s cubic-bezier(0, 0, 0, 0), border-color 0.3s cubic-bezier(0, 0, 0, 0);
+    }
+
+    .button:hover {
+        color: #CD2068;
+        background: white;
+    }
+
+    .button:active {
+        border: 2px solid white;
+        background: white;
+        -webkit-transition: none;
+        -moz-transition: none;
+        -o-transition: none;
+        transition: none;
+    }
+
+    .input {
+        display: inline-block;
+        -webkit-box-sizing: content-box;
+        -moz-box-sizing: content-box;
+        box-sizing: content-box;
+        padding: 30px 40px;
+        border: 1px solid #b7b7b7;
+        -webkit-border-radius: 3px;
+        border-radius: 3px;
+        font: normal medium/normal Arial, Helvetica, sans-serif;
+        color: #CD2068;
+        -o-text-overflow: clip;
+        text-overflow: clip;
+        background: rgba(252, 252, 252, 1);
+        -webkit-box-shadow: 2px 2px 2px 0 rgba(0, 0, 0, 0.2) inset;
+        box-shadow: 2px 2px 2px 0 rgba(0, 0, 0, 0.2) inset;
+        text-shadow: 1px 1px 0 rgba(255, 255, 255, 0.66);
+        -webkit-transition: all 200ms cubic-bezier(0.42, 0, 0.58, 1);
+        -moz-transition: all 200ms cubic-bezier(0.42, 0, 0.58, 1);
+        -o-transition: all 200ms cubic-bezier(0.42, 0, 0.58, 1);
+        transition: all 200ms cubic-bezier(0.42, 0, 0.58, 1);
+
+    }
+
+    .input:hover {
+        border: 1px solid #a3a3a3;
+        background: rgba(255, 255, 255, 1);
+        -webkit-transition: all 100ms cubic-bezier(0.42, 0, 0.58, 1);
+        -moz-transition: all 100ms cubic-bezier(0.42, 0, 0.58, 1);
+        -o-transition: all 100ms cubic-bezier(0.42, 0, 0.58, 1);
+        transition: all 100ms cubic-bezier(0.42, 0, 0.58, 1);
+    }
+
+    .input:focus {
+        border: 1px solid #CD2068;
+        -webkit-box-shadow: 4px 4px 4px 0 rgba(0, 0, 0, 0.2) inset;
+        box-shadow: 4px 4px 4px 0 rgba(0, 0, 0, 0.2) inset;
+        -webkit-transition: all 50ms cubic-bezier(0.42, 0, 0.58, 1);
+        -moz-transition: all 50ms cubic-bezier(0.42, 0, 0.58, 1);
+        -o-transition: all 50ms cubic-bezier(0.42, 0, 0.58, 1);
+        transition: all 50ms cubic-bezier(0.42, 0, 0.58, 1);
+    }
+
+    .text {
+        -webkit-box-sizing: content-box;
+        -moz-box-sizing: content-box;
+        box-sizing: content-box;
+        border: none;
+        font: normal 28px/1 "raleway", Helvetica, sans-serif;
+        color: #ffffff;
+        text-align: left;
+        -o-text-overflow: ellipsis;
+        text-overflow: ellipsis;
+    }
+
+    .box {
+        margin: auto;
+        width: 50%;
+        border: 3px solid white;
+        padding: 10px;
+    }
+</style>
+<script type="text/javascript">
+    function compile() {
+        var x = document.getElementById("msg").value;
+        x = x.trim();
+        var y = x.includes(" ");
+        alert(y);
+        var msgbin = "invalid or incomplete mnemonics or instruction";
+        var msghex = "invalid or incomplete mnemonics or instruction";
+        var zopen = x.includes("[");
+        var zclose = x.includes("]");
+        (y || (zopen === true && zclose === true)) ? compare(x) : printmsg(msgbin, msghex);
+    }
+
+    function menmonics(instr) {
+        var first, second, third;
+        instr.toUpperCase();
+        if (instr.includes('BX')) {
+            first = instr.includes('BX+');
+            second = instr.includes('BX+SI');
+            third = instr.includes('BX+DI');
+
+            (first && (second || third)) ? (true) : (false);
+        }
+        else if (instr.includes('BP')) {
+            first = instr.includes('BP+');
+            second = instr.includes('BP+SI');
+            third = instr.includes('BP+DI');
+
+            (first && (second || third)) ? (true) : (false);
+        }
+    }
+
+    function generate(instr, instrlength) {
+        instr = instr.trim();
+        console.log(instr.length);
+        switch (instr.length) {
+            case 2:
+            case 3:
+                wordreg(instr);
+                break;
+            case 4:
+            case 5:
+            case 6:
+            case 7:
+            case 8:
+            case 9:
+                menmonics(instr);
+                break;
+            default:
+                var msgbin = "invalid or incomplete mnemonics or instruction";
+                var msghex = "invalid or incomplete mnemonics or instruction";
+                printmsg(msgbin, msghex)
+        }
+    }
+
+    function wordreg(instr) {
+        var n = '01000';
+        var o = '4'
+        instr = instr.trim();
+        switch (instr) {
+            case 'ax':
+                n = n + '000';
+                o = o + '0';
+                break;
+            case 'cx':
+                n = n + '001';
+                o = o + '1';
+                break;
+            case 'dx':
+                n = n + '010';
+                o = o + '2';
+                break;
+            case 'bx':
+                n = n + '011';
+                o = o + '3';
+                break;
+            case 'sp':
+                n = n + '100';
+                o = o + '4';
+                break;
+            case 'bp':
+                n = n + '101';
+                o = o + '5';
+                break;
+            case 'si':
+                n = n + '110';
+                o = o + '6';
+                break;
+            case 'di':
+                n = n + '111';
+                o = o + '7';
+                break;
+            case 'al':
+                n = '1111111'
+                n = n + '0' + '11' + '000' + '000';
+                o = 'FE';
+                o = o + ' C0';
+                break;
+            case 'cl':
+                n = '1111111'
+                n = n + '0' + '11' + '000' + '001';
+                o = 'FE';
+                o = o + ' C1';
+                break;
+            case 'dl':
+                n = '1111111'
+                n = n + '0' + '11' + '000' + '010';
+                o = 'FE';
+                o = o + ' C2';
+                break;
+            case 'bl':
+                n = '1111111'
+                n = n + '0' + '11' + '000' + '011';
+                o = 'FE';
+                o = o + ' C3';
+                break;
+            case 'ah':
+                n = '1111111'
+                n = n + '0' + '11' + '000' + '100';
+                o = 'FE';
+                o = o + ' C4';
+                break;
+            case 'ch':
+                n = '1111111'
+                n = n + '0' + '11' + '000' + '101';
+                o = 'FE';
+                o = o + ' C5';
+                break;
+            case 'dh':
+                n = '1111111'
+                n = n + '0' + '11' + '000' + '110';
+                o = 'FE';
+                o = o + ' C6';
+                break;
+            case 'bh':
+                n = '1111111'
+                n = n + '0' + '11' + '000' + '111';
+                o = 'FE';
+                o = o + ' C7';
+                break;
+            default:
+                n = "invalid or incomplete mnemonics or instruction";
+                o = "invalid or incomplete mnemonics or instruction";
+        }
+        printmsg(n, o);
+    }
+
+    function printmsg(msgbin, msghex) {
+        document.getElementById("bin").innerHTML = msgbin;
+        document.getElementById("hex").innerHTML = msghex;
+    }
+
+    function compare(x) {
+        console.log("arrived");
+        var y = x.substring(0, 3).toString().toUpperCase();
+        switch (y) {
+            case "INC":
+                generate(x.substring(3, x.length), x.length);
+                break;
+            default:
+                var msgbin = "invalid or incomplete mnemonics or instruction";
+                var msghex = "invalid or incomplete mnemonics or instruction";
+                printmsg(msgbin, msghex);
+        }
+    }
+</script>
+<div class="box">
+    <h1 class="text">INC INSTRUCTION SET</h1>
+    <input class="input" type="text" value="" id="msg">&nbsp;&nbsp;&nbsp;
+    <input class="button" type="submit" value="Run" id="sub" onclick="compile()"><br><br>
+    <h3 class="text">Binary
+        <ul id="bin"></ul>
+    </h3>
+    <br>
+    <h3 class="text">Hexadecimal
+        <ul id="hex"></ul>
+    </h3>
+</div>
+
+<br>
+</body>
+</html>

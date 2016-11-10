@@ -1,0 +1,39 @@
+<!--
+  NAME: MSHELIZA EUNICE
+  MAT NO: 13CK015483
+  COURSE: I.C.E
+  INSTRUCTION SET: IRET-->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>IRET INSTRUCTION SET</title>
+</head>
+<body>
+<input id="instr">
+  <button onclick="daa()">submit</button> <!-- gives the BCD adjusted equivalent-->
+     <p id="bin"></p>
+     <p id="hex"></p>
+<script>
+    function daa(){
+    var x,bin,hex,dec;
+    x = document.getElementById('instr').value.trim();
+
+     if (isNaN(x) && x == "IRET" || x == "iret")
+     {
+          dec = 207;
+          bin = dec.toString(2);
+          hex = dec.toString(16);
+         document.getElementById('bin').innerHTML = "bin : " + bin;
+         document.getElementById('hex').innerHTML = "hex : " + hex;
+     }
+        else
+     {
+         window.alert('invalid instruction set')
+
+     }
+    }
+</script>
+
+</body>
+</html>

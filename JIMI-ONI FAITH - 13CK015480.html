@@ -1,0 +1,53 @@
+<!--
+  NAME: JIMI-ONI FAITH O.
+  MAT NO: 13CK015480
+  COURSE: I.C.E
+  INSTRUCTION SET: INT-->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>INT INSTRUCTION SET</title>
+
+</head>
+<body>
+<br><br><br>
+
+<input id="txtdata">
+<button onclick="data()">
+    Assemble
+</button>
+
+<h4> Binary: <h5 id="bin"></h5>
+
+
+</h4>
+<h4> Hexadecimal:
+    <h5 id="hex"></h5>
+</h4>
+<script>
+    function print(outputbin, outputhex) {
+        document.getElementById('bin').innerHTML = outputbin;
+        document.getElementById('hex').innerHTML = outputhex;
+
+    }
+    function data() {
+        var bin;
+        var value = document.getElementById('txtdata').value.trim();
+        var instr = value.substr(0, 3).toString().toUpperCase();
+        var num = value.substr(4, 2).valueOf();
+        if (instr == "INT") {
+            var x = parseInt(num);
+            bin = x.toString(2);
+            var binconst = "11001101" + bin;
+            var hexconst = "CD " + x;
+            print(binconst, hexconst);
+
+
+        }
+
+    }
+</script>
+
+</body>
+</html>

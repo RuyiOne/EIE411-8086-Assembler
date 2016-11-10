@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>LDS INSTRUCTION SET</title>
+    <!--0L0W0GB0YE EMMANUEL 13CK015493 ICE-->
+
+
+
+
+</head>
+<body>
+<br><br><br>
+
+<input id="txtdata">
+<button onclick="data()">
+    Assemble
+</button>
+
+<h4> Binary: <h5 id="bin"></h5>
+
+
+</h4>
+<h4> Hexadecimal:
+    <h5 id="hex"></h5>
+</h4>
+
+
+<script>
+    function print(outputbin, outputhex) {
+        document.getElementById('bin').innerHTML = outputbin;
+        document.getElementById('hex').innerHTML = outputhex;
+
+    }
+
+
+    function data() {
+        var ax, bp;
+        var datainput = document.getElementById('txtdata').value.trim();
+        var str = datainput.substr(0, 3).toString().toUpperCase();
+        var mem = datainput.substr(7, 1).toString().toUpperCase();
+
+        if (str == "LDS") {
+            if (mem == "M" ) {
+                var x = datainput.substr(4, 2);
+                var y = x.toString().toUpperCase();
+                switch (y) {
+                    case 'AX':
+                        ax = "1100010100000000";
+                        bp = "C5 00";
+                        break;
+                    case 'BX':
+                        ax = "1100010100011000";
+                        bp = "C5 18";
+                        break;
+                    case 'CX':
+                        ax = "1100010100001000";
+                        bp = "C5 08";
+                        break;
+                    case 'DX':
+                        ax = "1100010100010000";
+                        bp = "C5 10";
+                        break;
+                    case 'BP':
+                        ax = "1100010100101000";
+                        bp = "C5 28";
+                        break;
+                    case 'DI':
+                        ax = "1100010100111000";
+                        bp = "C5 38";
+                        break;
+                    case 'SI':
+                        ax = "1100010100110000";
+                        bp = "C5 30";
+                        break;
+                    case 'SP':
+                        ax = "1100010100100000";
+                        bp = "C5 20";
+                        break;
+
+                    default:
+                        alert("error")
+                        ax = "invalid command";
+                        bp = "invalid command ";
+
+
+                }
+                print(ax, bp);
+
+            }
+            else {
+                alert("Error, No memory detected");
+
+            }
+
+
+        }
+        else {
+            alert("Wrong Instruction inputed");
+
+        }
+
+
+
+
+
+    }
+</script>
+
+</body>
+</html>
