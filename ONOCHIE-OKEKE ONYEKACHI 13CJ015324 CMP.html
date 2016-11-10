@@ -1,0 +1,278 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+<title>EIE411</title>
+<script type="text/javascript"></script>
+</head>
+<body>
+<h1>LINE ASSEMBLER</h1>
+<p>This assembler handles all possibiities for CMP(compare) except register/memory and register</p>
+<label id="la">Instruuction: </labebl>
+<input type="text" id="form-inst" onblur="action()" />
+<input type="submit" value="assemble" onclick="start();" />
+<div id="ans">The results are shown below: <br /></div>
+<script type="text/javascript">
+function start()
+{
+	var para=document.getElementById("form-inst");
+	var disp=document.getElementById("ans");
+	var parameters=para.value;
+	var tri=parameters.replace(","," ");
+	var tri1=tri.trim().toUpperCase();
+	if(parameters.length>3)
+	{
+		if(parameters.substring(0,4).toUpperCase()=="CMP ")
+		{
+			//immediate with accumulator
+			if (parameters.substring(4,6).toUpperCase()=="AX")
+			{
+				var conv=Number(parameters.substring(7));
+				var dec=61;
+				var hex1=(+dec).toString(16).toUpperCase();
+				disp.innerHTML="Hexadecimal value: "+" "+hex1+" "+conv+" 00"+"<br />";
+				var nuh=(+conv).toString(2);
+				var bin1=(+dec).toString(2);
+				disp.innerHTML+="Binary value is: "+" "+bin1+" "+nuh;
+			}
+			else if (parameters.substring(4,6).toUpperCase()=="AL")
+			{
+				var conv=Number(parameters.substring(7));
+				var dec=60;
+				var hex1=(+dec).toString(16).toUpperCase();
+				disp.innerHTML="Hexadecimal value: "+" "+hex1+" "+conv+" 00"+"<br />";
+				var nuh=(+conv).toString(2);
+				var bin1=(+dec).toString(2);
+				disp.innerHTML+="Binary value is: "+" "+bin1+" "+nuh;
+			}
+			//end of immediate with accumulator
+			//IMMEDIATE WITH REISTER
+			else if (parameters.substring(4,6).toUpperCase()=="CX")
+			{
+				var conv=Number(parameters.substring(7));
+				var dec=131;
+				var dec2=249;
+				var hex1=(+dec).toString(16).toUpperCase();
+				var hex2=(+dec2).toString(16).toUpperCase();
+				disp.innerHTML="Hexadecimal value: "+" "+hex1+" "+hex2+" "+conv+"<br />";
+				var nuh=(+conv).toString(2);
+				var bin1=(+dec).toString(2);
+				var bin2=(+dec2).toString(2);
+				disp.innerHTML+="Binary value is: "+" "+bin1+" "+bin2+" "+nuh;
+			}
+			else if (parameters.substring(4,6).toUpperCase()=="DX")
+			{
+				var conv=Number(parameters.substring(7));
+				var dec=131;
+				var dec2=250;
+				var hex1=(+dec).toString(16).toUpperCase();
+				var hex2=(+dec2).toString(16).toUpperCase();
+				disp.innerHTML="Hexadecimal value: "+" "+hex1+" "+hex2+" "+conv+"<br />";
+				var nuh=(+conv).toString(2);
+				var bin1=(+dec).toString(2);
+				var bin2=(+dec2).toString(2);
+				disp.innerHTML+="Binary value is: "+" "+bin1+" "+bin2+" "+nuh;
+			}
+			else if (parameters.substring(4,6).toUpperCase()=="BX")
+			{
+				var conv=Number(parameters.substring(7));
+				var dec=131;
+				var dec2=251;
+				var hex1=(+dec).toString(16).toUpperCase();
+				var hex2=(+dec2).toString(16).toUpperCase();
+				disp.innerHTML="Hexadecimal value: "+" "+hex1+" "+hex2+" "+conv+"<br />";
+				var nuh=(+conv).toString(2);
+				var bin1=(+dec).toString(2);
+				var bin2=(+dec2).toString(2);
+				disp.innerHTML+="Binary value is: "+" "+bin1+" "+bin2+" "+nuh;
+			}
+			else if (parameters.substring(4,6).toUpperCase()=="SP")
+			{
+				var conv=Number(parameters.substring(7));
+				var dec=131;
+				var dec2=252;
+				var hex1=(+dec).toString(16).toUpperCase();
+				var hex2=(+dec2).toString(16).toUpperCase();
+				disp.innerHTML="Hexadecimal value: "+" "+hex1+" "+hex2+" "+conv+"<br />";
+				var nuh=(+conv).toString(2);
+				var bin1=(+dec).toString(2);
+				var bin2=(+dec2).toString(2);
+				disp.innerHTML+="Binary value is: "+" "+bin1+" "+bin2+" "+nuh;
+			}
+			else if (parameters.substring(4,6).toUpperCase()=="BP")
+			{
+				var conv=Number(parameters.substring(7));
+				var dec=131;
+				var dec2=253;
+				var hex1=(+dec).toString(16).toUpperCase();
+				var hex2=(+dec2).toString(16).toUpperCase();
+				disp.innerHTML="Hexadecimal value: "+" "+hex1+" "+hex2+" "+conv+"<br />";
+				var nuh=(+conv).toString(2);
+				var bin1=(+dec).toString(2);
+				var bin2=(+dec2).toString(2);
+				disp.innerHTML+="Binary value is: "+" "+bin1+" "+bin2+" "+nuh;
+			}
+			else if (parameters.substring(4,6).toUpperCase()=="SI")
+			{
+				var conv=Number(parameters.substring(7));
+				var dec=131;
+				var dec2=254;
+				var hex1=(+dec).toString(16).toUpperCase();
+				var hex2=(+dec2).toString(16).toUpperCase();
+				disp.innerHTML="Hexadecimal value: "+" "+hex1+" "+hex2+" "+conv+"<br />";
+				var nuh=(+conv).toString(2);
+				var bin1=(+dec).toString(2);
+				var bin2=(+dec2).toString(2);
+				disp.innerHTML+="Binary value is: "+" "+bin1+" "+bin2+" "+nuh;
+			}
+			else if (parameters.substring(4,6).toUpperCase()=="DI")
+			{
+				var conv=Number(parameters.substring(7));
+				var dec=131;
+				var dec2=255;
+				var hex1=(+dec).toString(16).toUpperCase();
+				var hex2=(+dec2).toString(16).toUpperCase();
+				disp.innerHTML="Hexadecimal value: "+" "+hex1+" "+hex2+" "+conv+"<br />";
+				var nuh=(+conv).toString(2);
+				var bin1=(+dec).toString(2);
+				var bin2=(+dec2).toString(2);
+				disp.innerHTML+="Binary value is: "+" "+bin1+" "+bin2+" "+nuh;
+			}
+			else if (parameters.substring(4,6).toUpperCase()=="AL")
+			{
+				var conv=Number(parameters.substring(7));
+				var dec=128;
+				var dec2=248;
+				var hex1=(+dec).toString(16).toUpperCase();
+				var hex2=(+dec2).toString(16).toUpperCase();
+				disp.innerHTML="Hexadecimal value: "+" "+hex1+" "+hex2+" "+conv+"<br />";
+				var nuh=(+conv).toString(2);
+				var bin1=(+dec).toString(2);
+				var bin2=(+dec2).toString(2);
+				disp.innerHTML+="Binary value is: "+" "+bin1+" "+bin2+" "+nuh;
+			}	
+			else if (parameters.substring(4,6).toUpperCase()=="CL")
+			{
+				var conv=Number(parameters.substring(7));
+				var dec=128;
+				var dec2=249;
+				var hex1=(+dec).toString(16).toUpperCase();
+				var hex2=(+dec2).toString(16).toUpperCase();
+				disp.innerHTML="Hexadecimal value: "+" "+hex1+" "+hex2+" "+conv+"<br />";
+				var nuh=(+conv).toString(2);
+				var bin1=(+dec).toString(2);
+				var bin2=(+dec2).toString(2);
+				disp.innerHTML+="Binary value is: "+" "+bin1+" "+bin2+" "+nuh;
+			}
+			else if (parameters.substring(4,6).toUpperCase()=="DL")
+			{
+				var conv=Number(parameters.substring(7));
+				var dec=128;
+				var dec2=250;
+				var hex1=(+dec).toString(16).toUpperCase();
+				var hex2=(+dec2).toString(16).toUpperCase();
+				disp.innerHTML="Hexadecimal value: "+" "+hex1+" "+hex2+" "+conv+"<br />";
+				var nuh=(+conv).toString(2);
+				var bin1=(+dec).toString(2);
+				var bin2=(+dec2).toString(2);
+				disp.innerHTML+="Binary value is: "+" "+bin1+" "+bin2+" "+nuh;
+			}
+			else if (parameters.substring(4,6).toUpperCase()=="BL")
+			{
+				var conv=Number(parameters.substring(7));
+				var dec=128;
+				var dec2=251;
+				var hex1=(+dec).toString(16).toUpperCase();
+				var hex2=(+dec2).toString(16).toUpperCase();
+				disp.innerHTML="Hexadecimal value: "+" "+hex1+" "+hex2+" "+conv+"<br />";
+				var nuh=(+conv).toString(2);
+				var bin1=(+dec).toString(2);
+				var bin2=(+dec2).toString(2);
+				disp.innerHTML+="Binary value is: "+" "+bin1+" "+bin2+" "+nuh;
+			}
+			else if (parameters.substring(4,6).toUpperCase()=="AH")
+			{
+				var conv=Number(parameters.substring(7));
+				var dec=128;
+				var dec2=252;
+				var hex1=(+dec).toString(16).toUpperCase();
+				var hex2=(+dec2).toString(16).toUpperCase();
+				disp.innerHTML="Hexadecimal value: "+" "+hex1+" "+hex2+" "+conv+"<br />";
+				var nuh=(+conv).toString(2);
+				var bin1=(+dec).toString(2);
+				var bin2=(+dec2).toString(2);
+				disp.innerHTML+="Binary value is: "+" "+bin1+" "+bin2+" "+nuh;
+			}
+			else if (parameters.substring(4,6).toUpperCase()=="CH")
+			{
+				var conv=Number(parameters.substring(7));
+				var dec=128;
+				var dec2=253;
+				var hex1=(+dec).toString(16).toUpperCase();
+				var hex2=(+dec2).toString(16).toUpperCase();
+				disp.innerHTML="Hexadecimal value: "+" "+hex1+" "+hex2+" "+conv+"<br />";
+				var nuh=(+conv).toString(2);
+				var bin1=(+dec).toString(2);
+				var bin2=(+dec2).toString(2);
+				disp.innerHTML+="Binary value is: "+" "+bin1+" "+bin2+" "+nuh;
+			}
+			else if (parameters.substring(4,6).toUpperCase()=="DH")
+			{
+				var conv=Number(parameters.substring(7));
+				var dec=128;
+				var dec2=254;
+				var hex1=(+dec).toString(16).toUpperCase();
+				var hex2=(+dec2).toString(16).toUpperCase();
+				disp.innerHTML="Hexadecimal value: "+" "+hex1+" "+hex2+" "+conv+"<br />";
+				var nuh=(+conv).toString(2);
+				var bin1=(+dec).toString(2);
+				var bin2=(+dec2).toString(2);
+				disp.innerHTML+="Binary value is: "+" "+bin1+" "+bin2+" "+nuh;
+			}
+			else if (parameters.substring(4,6).toUpperCase()=="BH")
+			{
+				var conv=Number(parameters.substring(7));
+				var dec=128;
+				var dec2=255;
+				var hex1=(+dec).toString(16).toUpperCase();
+				var hex2=(+dec2).toString(16).toUpperCase();
+				disp.innerHTML="Hexadecimal value: "+" "+hex1+" "+hex2+" "+conv+"<br />";
+				var nuh=(+conv).toString(2);
+				var bin1=(+dec).toString(2);
+				var bin2=(+dec2).toString(2);
+				disp.innerHTML+="Binary value is: "+" "+bin1+" "+bin2+" "+nuh;
+			}
+			//IMMEDIATE WITH REGISTER
+			//IMMEDIATE WITH MEMORY		
+			else if ((parameters.substring(4,5)=="[")&&(parameters.substring(7,8)=="]"))
+			{
+				var ang=parameters.substring(5,7).toUpperCase();
+				var num1=128;
+				var num2=62;
+				var conv=Number(parameters.substring(9));
+				var hex1=(+num1).toString(16).toUpperCase();
+				var hex2=(+num2).toString(16).toUpperCase();
+				disp.innerHTML="Hexadecimal value: "+hex1+" "+hex2+" "+ang+" 00 "+conv+" "+"<br />";
+				var bin1=(+num1).toString(2).toUpperCase();
+				var bin2=(+num2).toString(2).toUpperCase();
+				var bin3=(+ang).toString(2).toUpperCase();
+				var bin4=(+conv).toString(2).toUpperCase();
+				disp.innerHTML+="Hexadecimal value: "+bin1+" "+bin2+" "+bin3+" 00 "+bin4+" "+"<br />";
+			}
+			
+		}
+		else
+		{
+			disp.innerHTML=" ";
+			disp.innerHTML+="This assembler works only for CMP and make sure you put a space after CMP";
+		}
+	}
+	else
+	{
+		disp.textContent=" ";
+		disp.textContent+="Wrong! Enter a valid instruction";
+	}
+}
+</script>
+</body>
+</html>
