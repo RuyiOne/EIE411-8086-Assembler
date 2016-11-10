@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html>
+<body>
+<p>Please enter the code</p>
+<input id = "stop" type = "text">
+<p>Please enter your present location</p>
+<input id = "start" type = "text">
+<button type = "button" onclick = "jump()">GO</button>
+<h5>13CK015462 ICE</h5>
+<p>
+Binary: <i id = "binary"></i>
+</p>
+<p>
+Hexadecimal: <i id = "h.d"></i>
+</p>
+<p id = "error"></p>
+
+
+
+<script>
+function jump(){
+var first = document.getElementById("stop").value; // stores the value in id name stop in variable first
+var first1 = first.substring(4); // stores the values from the fourth position of value in first in variable as a string in first1
+var hexto = parseInt(first1); // converts the value in first1 to an integer
+var txtJNC = first.substring(0,3); // stores the value in first three part of variable first in txtJNC
+var last = document.getElementById("start").value; // stores the vaalue in id start in last
+var last1 = parseInt(last);
+
+var otherpart = first.substring(4);
+testOP = parseInt(otherpart); // checks for presence of integer in otherpart
+testJNC = first.search(/JNC/i); // checks to see if first part of input contains JNC
+ 
+ if((testJNC >= 0)&&(testOP >= 0)&&(hexto < last1)){ // checks for the 
+ var last1 = parseInt(last);
+ var last3 = parseInt(last,16).toString(16);
+ var last4 = parseInt(last3,16);
+ var two="1";
+ var twoo= parseInt(two,10).toString(16)
+ var twooo= parseInt(twoo,16);
+ var binb = (twooo+last1);
+ var bina = binb - hexto;
+ 
+ var bina2 = parseInt(bina,16).toString(2);
+ var ff = "11111111";
+ var disp = "01110011"
+ var disp2 = ff - bina2;
+ var disp3 = parseInt(disp2,2).toString(16);
+ var disp4 = parseInt(disp,2).toString(16);
+ 
+ document.getElementById("binary").innerHTML = disp +" "+ disp2;
+ document.getElementById("h.d").innerHTML = disp4 +" "+ disp3;
+ document.getElementById("error").innerHTML = " ";
+ }
+ 
+ else if((testJNC >= 0)&&(testOP >= 0)&&(hexto > last1)){ // checks for the 
+ var last1 = parseInt(last);
+ var last3 = parseInt(last,16).toString(16);
+ var last4 = parseInt(last3,16);
+ 
+ var hexto = parseInt(first1);
+ 
+ var two="2";
+ var twoo= parseInt(two,10).toString(16)
+ var twooo= parseInt(twoo,16);
+ var binb = (hexto - twooo);
+ var bina = binb - last1;
+ 
+ var bina2 = parseInt(bina,16).toString(2);
+ var ff = "00000000";
+ var disp = "01110011"
+ var disp2 = ff + bina2;
+ var disp3 = parseInt(disp2,2).toString(16);
+ var disp4 = parseInt(disp,2).toString(16);
+ 
+ document.getElementById("binary").innerHTML = disp +" "+ disp2;
+ document.getElementById("h.d").innerHTML = disp4 +" "+ disp3;
+ document.getElementById("error").innerHTML = " ";
+ }
+ 
+ else if(txtJNC != "JNC"){
+ document.getElementById("binary").innerHTML = " ";
+ document.getElementById("h.d").innerHTML = " ";
+ document.getElementById("error").innerHTML = "Invalid code";
+ }
+}
+</script>
+</body>
+</html>
