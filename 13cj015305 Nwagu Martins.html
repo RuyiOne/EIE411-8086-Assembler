@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html>
+<body>
+<!--    Mnemonic-CALL
+    The CALL instruction saves the address of the next instruction onto the stack and then changes the Instruction Pointer(IP) to reflect the         value of its parameter. Since the IP keeps track of the currently executing instruction, this change causes the program to jump to the           beginning of the procedure. When the Return(RET) instruction is encountered, it pops the old IP value off the stack, thus causing procedure       to return to the main program body.
+    The CALL instruction can also take a register or memory location as a parameter. In this situation, the register/memory location contains the     address of the procedure to be called.
+-->
+<p>Enter the Current IP</p>
+<input id = "stop" type = "text">
+<p>Enter the CALL instruction</p>
+<input id = "start" type = "text">
+<button type = "button" onclick = "CALL()">CONVERT</button>
+
+<p>
+Binary: <i id = "binary"></i>
+</p>
+<p>
+Hexadecimal: <i id = "h.d"></i>
+</p>
+<p id = "error"></p>
+
+<script>
+function CALL(){
+var first = document.getElementById("stop").value;
+var last = document.getElementById("start").value;
+var last1 = last.substring(5); // stores the values from the fifth position of value in first in variable as a string in first1 
+var ff = "11111111";
+    
+    // Here
+    var Register = /(AX|BX|CX|DX|SI|SP)/i,
+        Number = /[0-9]/i,
+        Hex = /(A|B|C|D|E|F)/i,
+        Call = /CALL/i,
+        Space = / /i,
+        
+        testCall = last.search(Call),
+        testSpace = last.search(Space),
+        testRegisterL1 = last1.search(Register),
+        testNumberL1 = last1.search(Number),
+        testHexL1 = last1.search(Hex),
+        testNumberF1 = first.search(Number),
+        testHexF1 = first.search(Hex);
+    
+    if (testCall == 0 && testSpace == 4){
+        
+        if (testRegisterL1 >=0 && first == ""){
+             if (last1=="AX"||last1=="ax"){
+                var ax = "11010000";
+                var ax3 = parseInt(ff,2).toString(16);
+                var ax2 = parseInt(ax,2).toString(16);
+                var a = document.getElementById("binary").innerHTML = ff + " " + ax;
+                document.getElementById("h.d").innerHTML = ax3 +" "+ ax2;
+            }
+
+            else if(last1=="BX"||last1=="bx"){
+            var bx = "11010011";
+            var bx3 = parseInt(ff,2).toString(16);
+            var bx2 = parseInt(bx,2).toString(16);
+            var b = document.getElementById("binary").innerHTML = ff + " " + bx;
+             document.getElementById("h.d").innerHTML = bx3 +" "+ bx2;
+        }
+
+            else if (last1=="CX"||last1=="cx"){
+            var cx = "11010001";
+            var cx3 = parseInt(ff,2).toString(16);
+            var cx2 = parseInt(cx,2).toString(16);
+            var c = document.getElementById("binary").innerHTML = ff + " " + cx;
+            document.getElementById("h.d").innerHTML = cx3 +" "+ cx2;
+        }
+
+            else if (last1=="DX"||last1=="dx"){
+            var dx = "11010010";
+            var dx3 = parseInt(ff,2).toString(16);
+            var dx2 = parseInt(dx,2).toString(16);
+            var d = document.getElementById("binary").innerHTML = ff + " " + dx;
+            document.getElementById("h.d").innerHTML = dx3 +" "+ dx2;
+        }
+
+            else if (last1=="SI"||last1=="si"){
+            var ex = "11010110";
+            var ex3 = parseInt(ff,2).toString(16);
+            var ex2 = parseInt(ex,2).toString(16);
+            var e = document.getElementById("binary").innerHTML = ff + " " + ex;
+            document.getElementById("h.d").innerHTML = ex3 +" "+ ex2;
+        }
+
+            else if (last1=="[SI]"||last1=="[si]"){
+            var fx = "00010100";
+            var fx3 = parseInt(ff,2).toString(16);
+            var fx2 = parseInt(fx,2).toString(16);
+            var f = document.getElementById("binary").innerHTML = ff + " " + fx;
+            document.getElementById("h.d").innerHTML = fx3 +" "+ fx2;
+        }   
+
+            else if (last1=="[BX]"||last1=="[bx]"){
+            var gx = "00010111";
+            var gx3 = parseInt(ff,2).toString(16);
+            var gx2 = parseInt(gx,2).toString(16);
+            var g = document.getElementById("binary").innerHTML = ff + " " + gx;
+            document.getElementById("h.d").innerHTML = gx3 +" "+ gx2;
+        }
+
+            else if (last1=="[BX+SI]"||last1=="[bx+si]"){
+    var hx = "00010000";
+    var hx3 = parseInt(ff,2).toString(16);
+    var hx2 = parseInt(hx,2).toString(16);
+    var h = document.getElementById("binary").innerHTML = ff + " " + hx;
+    document.getElementById("h.d").innerHTML = hx3 +" "+ hx2;
+}
+            
+        }else if ( (testNumberL1 >= 0 || testHexL1 >= 0) && (testNumberF1 >= 0 || testHexF1 >= 0) ){
+            var E = "11101000";
+            var E1 = parseInt(E,2).toString(16);
+            var thr = "03";
+            var thr1 = parseInt(thr,2).toString(16);
+            var thr2 = parseInt(thr1);
+            var first1 = parseInt(first);
+            var last2 = parseInt(last1);
+            if (last2 > first1){
+            var f1 = parseInt(first1,16).toString(2); //converts the value in first1 from hex to string in base 2
+            var l1 = parseInt(last2,16).toString(2); //converts the value in last2 from hex to string in base 2
+            var f2 = parseInt(f1); //converts the value f1 in base 2 from string to integer 
+            var l2 = parseInt(l1); //converts thevalue l1 in base 2 from string to integer
+            var fl = f2 - l2;
+            var fl1 = fl - thr2;
+            var fl2 = parseInt(fl1,2).toString(16);
+            document.getElementById("binary").innerHTML = E + " " + fl1;
+            Document.getElementById("h.d").innerHTML = E1 + " " + fl2;
+    
+    }else{
+                alert("Invalid Command");
+            }          
+        }else {
+            alert("Please Enter a CALL instruction==");
+        }
+    }else{
+        alert("Invalid");
+    }
+}
+
+</script>
+</body>
+</html>
